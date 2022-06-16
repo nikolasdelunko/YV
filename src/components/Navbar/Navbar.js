@@ -37,7 +37,7 @@ export default function Navbar() {
       <Button variant="text">contact</Button>
      </Stack>
      </Box>
-     <Box>
+     <Box className={classes.mbButtons}>
           <IconButton
             size="large"
             edge="start"
@@ -45,7 +45,7 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon className={classes.mbIcon} />
           </IconButton>
       </Box>
     </Box>
