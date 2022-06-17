@@ -42,10 +42,10 @@ export default function Navbar() {
      </Box>
      <Box className={classes.dtButtons}>
      <Stack spacing={2} direction="row">
-      <Button variant="text">about</Button>
-      <Button variant="text">my skills</Button>
-      <Button variant="text">work</Button>
-      <Button variant="text">contact</Button>
+      <Button className={classes.btnHover} variant="text">about</Button>
+      <Button className={classes.btnHover} variant="text">my skills</Button>
+      <Button className={classes.btnHover} variant="text">work</Button>
+      <Button className={classes.btnHover} variant="text">contact</Button>
      </Stack>
      </Box>
      <Box className={classes.mbButtons}

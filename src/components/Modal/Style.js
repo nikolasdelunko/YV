@@ -7,5 +7,12 @@ export const useStyles = makeStyles(theme => ({
         marginTop: '83px',
         flexDirection: 'column',
         gap: '25px',
+    },
+    btnHover: {
+    "&:hover": {
+      color: "#FF2055 !important",
+      background: '#212121 !important',
+      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15) !important',
     }
+  }
 }))

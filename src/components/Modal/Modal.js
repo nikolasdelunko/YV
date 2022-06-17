@@ -21,10 +21,10 @@ export default function BasicModal() {
   return (
     <Box>
       <Box className={classes.buttonGroup}>
-       <Button size="large">about</Button>
-       <Button size="large">my skills</Button>
-       <Button size="large">works</Button>
-       <Button size="large">contact</Button>
+       <Button className={classes.btnHover} size="large">about</Button>
+       <Button className={classes.btnHover} size="large">my skills</Button>
+       <Button className={classes.btnHover} size="large">works</Button>
+       <Button className={classes.btnHover} size="large">contact</Button>
      </Box>
     </Box>
   );
