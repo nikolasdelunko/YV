@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Stack, Box, Button, Typography} from '@mui/material'
 import {useStyles} from './Style'
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import {useDispatch, useSelector} from "react-redux"
+import {openBurger} from '../../store/helpers/helpersSlice'
+
 
 
 
 export default function Navbar() {
     const classes = useStyles() 
-    const [open, setOpen] = useState(true);
-
+    const burger = useSelector((state) => state.helpers.burger)
+    const dispatch = useDispatch()
+    
+    
     const handleClose = () => {
-      setOpen(!open)
+      dispatch(openBurger(!burger))
     }
 
   return (
     <Box className={classes.navbar}>
-     <Box 	className={open ? classes.logo : classes.logoMenu}>
+     <Box 	className={burger ? classes.logoMenu : classes.logo}>
         <Box className={classes.nameBox}>
         <Typography variant="h5" component="h2"  className={classes.nameFirst}>
         Yar
@@ -54,7 +59,7 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            {open ? <MenuIcon className={classes.mbIcon} /> :   <CloseIcon className={classes.mbIcon} />}
+            {burger ? <CloseIcon className={classes.mbIcon} /> : <MenuIcon className={classes.mbIcon} />}
           </IconButton> 
       </Box>
     </Box>
