@@ -60,6 +60,9 @@ mbIcon: {
     display: 'flex',
     justifyContent: 'center',
     cursor: 'pointer',
+    "&:hover": {
+        color: "#FF2055 !important",
+    }
 },
 btnHover: {
     "&:hover": {
