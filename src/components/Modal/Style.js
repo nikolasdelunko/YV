@@ -9,10 +9,14 @@ export const useStyles = makeStyles(theme => ({
         gap: '25px',
     },
     btnHover: {
+        width: '100%',
     "&:hover": {
       color: "#FF2055 !important",
       background: '#212121 !important',
       boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15) !important',
     }
-  }
+  },
+  link: {
+    textDecoration: 'none'
+  },
 }))

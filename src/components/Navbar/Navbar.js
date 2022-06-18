@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <Box className={classes.navbar}>
      <Box 	className={burger ? classes.logoMenu : classes.logo}>
-     <Link  to={'/'} className={classes.linkName}>
+     <Link  to={'/'} className={classes.linkName}  onClick={handleClose}>
         <Box className={classes.nameBox}>
         <Typography variant="h5" component="h2"  className={classes.nameFirst}>
         Yar
