@@ -7,7 +7,27 @@ export const useStyles = makeStyles(theme => ({
         margin: '128px 20% 0 10%',
     },
     photoBox: {
+        position: 'absolute',
+        visibility: 'hidden',
+        ['@media (min-width: 768px)']: {
+            position: 'relative',
+            visibility: 'visible',
+        },
         marginLeft: '10%',
+    },
+    photoMob: {
+        position: 'relative',
+        visibility: 'visible',
+        ['@media (min-width: 768px)']: {
+            position: 'absolute',
+            visibility: 'hidden',
+        },
+        width: "90%",
+        height: '30%',
+        objectFit: 'cover',
+    },
+    textMob: {
+
     },
     textEl: {
     padding: '35px 0px',
