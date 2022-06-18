@@ -23,6 +23,7 @@ navbar: {
 },
 nameBox: {
     display: 'flex',
+    textDecoration: 'none'
 },
 subname: {
     display: 'flex',
@@ -69,5 +70,12 @@ btnHover: {
       color: "#FF2055 !important",
       background: '#00000000 !important',
     }
-  }
+  },
+  link: {
+    display: 'flex',
+    textDecoration: 'none'
+  },
+  linkName: {
+    textDecoration: 'none'
+  },
 }))

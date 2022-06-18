@@ -4,7 +4,6 @@ import {useStyles} from './Style'
 import Header from '../../components/Header/Header'
 
 
-
 export default function Main() {
   const classes = useStyles() 
 

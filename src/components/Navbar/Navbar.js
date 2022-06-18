@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from "react-redux"
 import {openBurger} from '../../store/helpers/helpersSlice'
+import {Link} from 'react-router-dom'
 
 
 
@@ -23,6 +24,7 @@ export default function Navbar() {
   return (
     <Box className={classes.navbar}>
      <Box 	className={burger ? classes.logoMenu : classes.logo}>
+     <Link  to={'/'} className={classes.linkName}>
         <Box className={classes.nameBox}>
         <Typography variant="h5" component="h2"  className={classes.nameFirst}>
         Yar
@@ -39,10 +41,13 @@ export default function Navbar() {
         bytski
         </Typography>
         </Box>
+        </Link>
      </Box>
      <Box className={classes.dtButtons}>
      <Stack spacing={2} direction="row">
+     <Link  to={'/about'} className={classes.link}>
       <Button className={classes.btnHover} variant="text">about</Button>
+      </Link>
       <Button className={classes.btnHover} variant="text">my skills</Button>
       <Button className={classes.btnHover} variant="text">work</Button>
       <Button className={classes.btnHover} variant="text">contact</Button>
