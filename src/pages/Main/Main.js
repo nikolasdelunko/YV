@@ -1,10 +1,16 @@
 import React from 'react'
 import {Box} from '@mui/material'
+import {useStyles} from './Style'
+import Header from '../../components/Header/Header'
+
+
 
 export default function Main() {
+  const classes = useStyles() 
+
   return (
-    <Box>
-        <h1>Main page</h1>
+    <Box className={classes.main}>
+      <Header />
     </Box>
   )
 }
