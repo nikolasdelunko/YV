@@ -21,13 +21,13 @@ export default function BasicModal() {
 
   return (
     <Box>
-      <Box className={classes.buttonGroup} onClick={handleClose}>
+      <Box className={classes.buttonGroup}>
       <Link  to={'/about'} className={classes.link}>
-       <Button className={classes.btnHover} size="large">about</Button>
+       <Button className={classes.btnHover} size="large" onClick={handleClose}>about</Button>
        </Link>
-       <Button className={classes.btnHover} size="large">my skills</Button>
-       <Button className={classes.btnHover} size="large">works</Button>
-       <Button className={classes.btnHover} size="large">contact</Button>
+       <Button className={classes.btnHover} size="large" onClick={handleClose}>my skills</Button>
+       <Button className={classes.btnHover} size="large" onClick={handleClose}>works</Button>
+       <Button className={classes.btnHover} size="large" onClick={handleClose}>contact</Button>
      </Box>
     </Box>
   );

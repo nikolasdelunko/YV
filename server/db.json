@@ -1,0 +1,39 @@
+{
+    "projects": [
+    {
+        "id" : 1,
+        "name": "FORKIO",
+        "description": "Technology stack: HTML5, JavaScript, SASS, Gulp,Adaptive and responsive",
+        "photo": "./photo/forkio.jpg",
+        "link":"https://nikolasdelunko.github.io/Forkio-/"
+    },
+    {
+        "id" : 2,
+        "name": "Doctor-cards",
+        "description": "email: lili@gmail.com password: 12345 Technology stack: HTML5 / JavaScript / SASS, Gulp / Cross Browser / OOP.",
+        "photo": "./photo/doctor.jpg",
+        "link":"https://nikolasdelunko.github.io/DoctorCards/"
+    },
+    {
+        "id" : 3,
+        "name": "Postil bedding shop",
+        "description": "Technology stack: HTML5 / JavaScript / React JS / Redux toolkit /Node.js / Material UI / Formik / Yup / React Transition Group / ESLint / Husky / Helmet / Travis CI",
+        "photo": "./photo/Postil.jpg",
+        "link":"https://fp-postil-bedding.herokuapp.com/"
+    },
+    {
+        "id" : 4,
+        "name": "What People Say About theHam",
+        "description": "Technology stack: HTML5 / JavaScript / CSS / Adaptive and responsive",
+        "photo": "./photo/Postil.jpg",
+        "link":"https://22yv.short.gy/TheHam"
+    },
+    {
+        "id" : 5,
+        "name": "Online-wallet",
+        "description": "Technology stack: HTML5 / JavaScript / CSS / Adaptive and responsive / React / Rd3 / Redux /",
+        "photo":"./photo/Online-wallet.jpg",
+        "link":""
+    }
+]
+}
