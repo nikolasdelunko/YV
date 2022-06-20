@@ -2,6 +2,8 @@ import React from 'react'
 import {Box} from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import Cards from './Cards'
+
 
 
 export default function Projects() {
@@ -15,10 +17,13 @@ export default function Projects() {
     useEffect(() => {
         getInfo()
     }, [])
-    console.log('AAAAAA', data)
+
+
   return (
     <Box>
+
     <h1>Projects</h1>
+    {data?.map((item)=><Cards data={item} key={item} />)}
     </Box>
   )
 }
