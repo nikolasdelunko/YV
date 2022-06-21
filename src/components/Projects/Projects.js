@@ -1,13 +1,14 @@
 import React from 'react'
-import {Box} from '@mui/material'
+import {Box, Grid } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import Cards from './Cards'
-
+import {useStyles} from './Style'
 
 
 export default function Projects() {
     const [data, setData] = useState()
+    const classes = useStyles() 
 
     const getInfo = async() => {
         const res =  await axios.get('http://localhost:3009/projects')
@@ -23,7 +24,9 @@ export default function Projects() {
     <Box>
 
     <h1>Projects</h1>
-    {data?.map((item)=><Cards data={item} key={item} />)}
+    <Box  className={classes.mainSec}>
+          {data?.map((item)=><Cards data={item} key={item} />)}
+          </Box>
     </Box>
   )
 }

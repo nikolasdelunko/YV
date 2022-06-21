@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Paper, Typography} from '@mui/material'
+import {Box, Paper, Typography, Button} from '@mui/material'
 import {useStyles} from './Style'
 
 
@@ -13,26 +13,18 @@ export default function Projects(data) {
       }
 
 return (
-    <Box>
-     <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        margin: '96px 56px 0 0',
-        '& > :not(style)': {
-          m: 1,
-          width: 440,
-          height: 336,
-        },
-      }}
-    >
+    <Box> 
+     <Box className={classes.father}>
       <Paper elevation={3} className={classes.mainBox} sx={{ borderTop: `2px solid ${fnk(10)}`}}>
         <Typography variant="h5" component="h4" color="#CCCCD5" className={classes.textEl}>
         {data.data.name}
         </Typography>
-        <Typography variant="h7" component="h7" color="#CCCCD5" className={classes.textEl}>
+        <Typography variant="h7" component="h5" color="#CCCCD5" className={classes.textEl}>
         {data.data.description}
         </Typography>
+        <a href={data.data.link} className={classes.link}>
+        <Button variant="outlined" className={classes.btn} onClick={()=>{}}>view project</Button>
+        </a>
         <img  className={classes.photo} src={data.data.photo} alt={'photo'} />
       </Paper>
     
