@@ -3,27 +3,37 @@ import { makeStyles } from '@mui/styles'
 
 export const useStyles = makeStyles(theme => ({
     link: {
-        textDecoration: 'none'
+        textDecoration: 'none',
+        textAlign: 'center',
     },
     mainSec: {
         display: 'flex',
         alignItems: 'flex-start',
         flexWrap: 'wrap',
-        gap: '50px',
+//         gap: '50px',
+//         "&:hover": {
+//             gap: '0px',
+// },
         // justifyContent: 'center',
     },
     father: {
+        transition: '1s',
+        overflow:'hidden',
         marginTop: '96px',
-        // "&:hover": {
-        //   m: 1,
-        //   width: 541,
-        //   height: 424,
-        // },
-        '& > :not(style)': {
-          m: 1,
-          width: 440,
-          height: 336,
+        width: '440px',
+        height: '336px',
+        padding: "0 25px 0 0", 
+        "&:hover": {
+          width: "541px",
+          height: "424px",
+          padding: "0",
+          margin: '35px 0 0 -25px'
         },
+        // '& > :not(style)': {
+        //   m: 1,
+        //   width: 440,
+        //   height: 336,
+        // },
     },
     textH: {
         padding: '35px 0px 0px 8px' ,
@@ -35,14 +45,18 @@ export const useStyles = makeStyles(theme => ({
         textAlign: 'left',
     },
     photo: {
-        width: '442px',
-        height: '182px',
-        // width: '100%',
+        maxWidth:'100%',
+        height: '100%',
         objectFit: 'cover',
     },
     mainBox: {
         position: 'relative',
         textAlign: 'left',
+        display: 'flex',
+        flexDirection: 'column',
+                "&:hover": {
+                    // border: '9px solid black'
+        },
         
     },
     btn: {
@@ -50,7 +64,6 @@ export const useStyles = makeStyles(theme => ({
         padding: '35px 0px',
         backgroundColor: '#1d1d1d',
         transformOrigin: "center",
-        transform: "translate(85%, -50%)",
         color: '#2036FF !important',
         border: '1px solid #2036FF !important',
         "&:hover": {
