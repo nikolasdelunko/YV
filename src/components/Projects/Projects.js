@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Grid } from '@mui/material'
+import {Box, Typography } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import Cards from './Cards'
@@ -21,9 +21,8 @@ export default function Projects() {
 
 
   return (
-    <Box>
-
-    <h1>Projects</h1>
+    <Box className={classes.projects}>
+    <Typography variant="h4" component="h4" color="#C8CAD6" className={classes.textHead}>Projects</Typography>
     <Box  className={classes.mainSec}>
           {data?.map((item)=><Cards data={item} key={item} />)}
           </Box>

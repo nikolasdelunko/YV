@@ -16,14 +16,14 @@ return (
     <Box> 
      <Box className={classes.father}>
       <Paper elevation={3} className={classes.mainBox} sx={{ borderTop: `2px solid ${fnk(10)}`}}>
-        <Typography variant="h5" component="h4" color="#CCCCD5" className={classes.textEl}>
+        <Typography variant="h5" component="h4" color="#CCCCD5" className={classes.textH}>
         {data.data.name}
         </Typography>
         <Typography variant="h7" component="h5" color="#CCCCD5" className={classes.textEl}>
         {data.data.description}
         </Typography>
         <a href={data.data.link} className={classes.link}>
-        <Button variant="outlined" className={classes.btn} onClick={()=>{}}>view project</Button>
+        <Button variant="outlined" className={classes.btn}>view project</Button>
         </a>
         <img  className={classes.photo} src={data.data.photo} alt={'photo'} />
       </Paper>
