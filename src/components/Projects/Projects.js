@@ -24,7 +24,7 @@ export default function Projects() {
     <Box className={classes.projects}>
     <Typography variant="h4" component="h4" color="#C8CAD6" className={classes.textHead}>Projects</Typography>
     <Box  className={classes.mainSec}>
-          {data?.map((item)=><Cards data={item} key={item} />)}
+          {data?.map((item)=><Cards data={item} key={item} onBlur={console.log('sads')} />)}
           </Box>
     </Box>
   )

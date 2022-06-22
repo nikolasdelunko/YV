@@ -36,8 +36,8 @@ export const useStyles = makeStyles(theme => ({
         textAlign: 'left',
     },
     photo : {
-        width: "100%",
-        height: '80%',
+        width: '457px',
+        height: '459px',
         objectFit: 'cover',
     },
     btn: {

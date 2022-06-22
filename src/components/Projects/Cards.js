@@ -1,21 +1,27 @@
 import React from 'react'
 import {Box, Paper, Typography, Button} from '@mui/material'
 import {useStyles} from './Style'
-
+import {  useState } from 'react';
+import useColors from '../../utils/costumHooks/useColors'
 
 export default function Projects(data) {
     const classes = useStyles() 
+    const [btnOn, setBtnOn]= useState(false)
+    const { colorsHendler } = useColors()
 
-    const fnk = (max) => {
-      const color =  Math.floor(Math.random()*max)
-      const colors = ['#20FF94','#FFE920', '#20D7FF', '#FF2055', '#FF20E9', '#7520FF', '#20FFD7', '#20D7FF', '#7520FF', '#FF2D20']
-      return colors[color]
-      }
+  
+   const btnHover = () => {
+    setBtnOn(true)
+   }
+
+   const of = () => {
+    setBtnOn(false)
+   }
 
 return (
     <Box> 
-     <Box className={classes.father}>
-      <Paper elevation={3} className={classes.mainBox} sx={{ borderTop: `2px solid ${fnk(10)}`}}>
+     <Box className={classes.father} >
+      <Paper elevation={3} className={classes.mainBox} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}} onMouseMove={btnHover} onMouseLeave={of}>
         <Typography variant="h5" component="h4" color="#CCCCD5" className={classes.textH}>
         {data.data.name}
         </Typography>
@@ -23,7 +29,7 @@ return (
         {data.data.description}
         </Typography>
         <a href={data.data.link} className={classes.link}>
-        <Button variant="outlined" className={classes.btn}>view project</Button>
+        <Button variant="outlined" className={btnOn ? classes.btn : classes.btnHover}>view project</Button>
         </a>
         <img  className={classes.photo} src={data.data.photo} alt={'photo'} />
       </Paper>

@@ -80,5 +80,9 @@ export const useStyles = makeStyles(theme => ({
         textTransform: 'uppercase',
     }, projects: {
         margin: '0 0 0 10%',
+    }, btnHover: {
+        zIndex: '-1',
+        position: 'absolute',
+        visable: 'hidden',
     }
 }))
