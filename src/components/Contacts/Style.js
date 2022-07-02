@@ -43,5 +43,9 @@ export const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         gap: '63px',
         paddingBottom: '225px',
-    }
+    },
+    link: {
+        textDecoration: 'none',
+        textAlign: 'center',
+    },
 }))

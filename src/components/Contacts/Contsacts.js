@@ -18,16 +18,21 @@ export default function Contsacts() {
         <Stack spacing={2} direction="row" className={classes.btnBox}>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item md={3} sm={12}>
+            <a href={'https://www.linkedin.com/in/yaroslav-verbytski/'} className={classes.link}>
            <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>linkedin</Button>
+           </a>
             </Grid>
             <Grid item md={3} sm={12}>
-                <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>githab</Button>
+             <a href={'https://github.com/nikolasdelunko'} className={classes.link}>
+                 <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>githab</Button>
+             </a>
             </Grid>
             <Grid item md={3} sm={12}>
+            <a href={'https://t.me/verbytskiYar'} className={classes.link}>
             <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>telegram</Button>
+            </a>
             </Grid>
-            <Grid item md={3} sm={12}>
-                
+            <Grid item md={3} sm={12}>    
              <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>download cv</Button>
             </Grid>
              </Grid>
