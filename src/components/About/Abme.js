@@ -20,8 +20,6 @@ export default function About() {
         getInfo()
     }, [])
 
-    console.log(data)
-
   return (
     <Box className={classes.father}>
      <Typography variant="h4" component="h4" color="#C8CAD6"  className={classes.textHead}>

@@ -6,7 +6,7 @@ export const useStyles = makeStyles(theme => ({
         fontStyle: 'normal',
         fontSize: '48px',
         textTransform: 'uppercase',
-        padding: '100px 0px 0px 8px',
+        padding: '100px 0px 0px 10%',
         fontWeight: 'bolder !important',
         lineHeight: '110%',
         paddingTop: '15px',
@@ -19,6 +19,16 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap',
+    },
+    link: {
+        textDecoration: 'none',
+        textAlign: 'center',
+    },
+    boxCard: {
+    paddingTop: '200px',
+    },
+    conteinerCard: {
+        paddingLeft: '10%',
     },
     text: {  
         padding: '15px 5px 0 5px',
@@ -36,10 +46,51 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'center',
     },
-    father: { 
-        margin: '0 0 0 10%',
-        display: 'flex',
-        flexDirection: 'column',
+    mainCard: { 
+        width: '460px',
+        height: '238px',
+        left: '100px',
+        top: '850px',
+        background: '#1D1D1D',
+        boxShadow: '0px 3px 3px 3px rg',
     
 },
+    cardTextUp: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '28px 10% 0',
+},
+    cardTextDuwn: {
+        margin: '26px 0 0 10%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+},
+    cardItems: {
+        display: "flex",
+        flexWrap: "wrap"
+    },
+    textH: {
+        fontStyle: 'normal',
+        letterSpacing: '0.03em',
+        textTransform: 'uppercase',
+        color: "#C8CAD6",
+        fontWeight: '500 !important',
+    },
+    textLink: {
+        color: '#AFA9A9',
+        textDecorationLine: 'underline',
+        fontSize: '16px',
+    },
+    textSpec: {
+        color: '#787878',
+        fontSize: '18px !important',
+        fontWeight: '500 !important',
+    },
+    textYear: {
+        color: '#FFFFFF',
+        fontWeight: "400 !important",
+        fontSize: '20px !important',
+    }
 }))
