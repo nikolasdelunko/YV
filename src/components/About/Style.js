@@ -55,6 +55,12 @@ export const useStyles = makeStyles(theme => ({
         boxShadow: '0px 3px 3px 3px rg',
     
 },
+    mainCardExp: {
+        maxWidth: '685px',
+        height: '373px',     
+        background: '#1D1D1D',      
+        boxShadow:' 0px 3px 3px 3px rgba(0, 0, 0, 0.15)'
+    },
     cardTextUp: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -66,6 +72,11 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
+},
+    cardTextDuwnExp: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        margin: '8px 10% 32px',
 },
     cardItems: {
         display: "flex",
@@ -92,5 +103,15 @@ export const useStyles = makeStyles(theme => ({
         color: '#FFFFFF',
         fontWeight: "400 !important",
         fontSize: '20px !important',
+    },
+    textDescriptBox:{
+        margin: '0 10%'
+    },
+    textDescript: {
+        textAlign: 'left',
+        maxWidth: "585px",
+        color: '#CCCCD5',
+        fontWeight: "500 !important",
+        fontSize: '18px !important',
     }
 }))

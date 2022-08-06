@@ -5,13 +5,13 @@ import {useStyles} from './Style'
 import useColors from '../../utils/costumHooks/useColors'
 import axios from 'axios'
 
-export default function Projects() {
+export default function Card({education}) {
     const [data, setData] = useState()
     const classes = useStyles() 
     const { colorsHendler } = useColors()
 
     const getInfo = async() => {
-        const res =  await axios.get('http://localhost:3009/education')
+        const res =  await axios.get(education ? 'http://localhost:3009/education' : 'http://localhost:3009/workExp')
         return setData(res.data)
     }
 
@@ -24,30 +24,33 @@ export default function Projects() {
 return (
     <Box className={classes.boxCard}> 
          <Typography variant="h4" component="h4" color="#C8CAD6"  className={classes.textHead}>
-         education and training
+         {education ? 'education and training' : 'work experience'}
         </Typography>
         <Box className={classes.cardItems}>
         {data?.map((item)=>
             <Box className={classes.conteinerCard}>
-             <Paper elevation={3} className={classes.mainCard} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>
+             <Paper elevation={3} className={education ? classes.mainCard : classes.mainCardExp} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>
                  <Box className={classes.cardTextUp}>
                      <Typography variant="h5" component="h4"  className={classes.textH}>
                      {item.name}
                      </Typography>
-                  <a href={'/'} className={classes.link}>
+                     {education && <a href={'/'} className={classes.link}>
                      <Typography variant="h7" component="h5" className={classes.textLink}>
                      {item.link}
                     </Typography>
                   </a>
+                     }
               </Box>  
-              <Box className={classes.cardTextDuwn}>
+              <Box className={education ? classes.cardTextDuwn : classes.cardTextDuwnExp}>
               <Typography variant="h7" component="h5"  className={classes.textSpec}>
                  {item.specialization}
               </Typography>
               <Typography variant="h5" component="h4"  className={classes.textYear}>
               {item.year}
               </Typography>
-              </Box>    
+              </Box>  
+              {!education && <Box className={classes.textDescriptBox}><Typography variant="h5" component="h4"  className={classes.textDescript}> {item.description}</Typography></Box>
+              }  
       </Paper>
     </Box>
         )}
