@@ -48,7 +48,7 @@ export const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
     },
     mainCard: { 
-        maxWidth: '460px',
+        width: '460px',
         height: '238px',
         left: '100px',
         top: '850px',
