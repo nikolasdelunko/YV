@@ -13,7 +13,7 @@ export default function Skills() {
    'Experience with MongoDB', 'Gulp', 'Understanding of OOP', 'Experience with Postman', 'Responsive Web Design']
 
   return (
-    <Box className={classes.main} id={'#faq-1'}>
+    <Box className={classes.main} id={'skills'}>
     <Typography variant="h4" component="h4" color="#C8CAD6" className={classes.textHead}>knowlrdge and skills</Typography>
       <Box className={classes.textBlock}>
        {arr?.map((item)=> <Typography variant="h5" component="h5" color="#C8CAD6" sx={{ color: `${colorsHendler(10)}`}} className={classes.textSkl}>{item}</Typography>)}

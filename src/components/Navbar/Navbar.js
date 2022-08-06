@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from "react-redux"
 import {openBurger} from '../../store/helpers/helpersSlice'
 import {Link} from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link';
+
 
 
 
@@ -49,7 +49,7 @@ export default function Navbar() {
      <Link  to={'/about'} className={classes.link}>
       <Button className={classes.btnHover} variant="text">about</Button>
       </Link>
-      <Button className={classes.btnHover} variant="text">my skills</Button>
+      <a className={classes.link} href="#skills"><Button className={classes.btnHover} variant="text">my skills</Button></a>
       <Button className={classes.btnHover} variant="text">work</Button>
       <Button className={classes.btnHover} variant="text">contact</Button>
      </Stack>

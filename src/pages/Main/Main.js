@@ -6,6 +6,7 @@ import Projects from '../../components/Projects/Projects'
 import Skills from '../../components/Skills/Skills'
 import Contacts from '../../components/Contacts/Contsacts'
 
+
 export default function Main() {
   const classes = useStyles() 
 
