@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Paper, Typography} from '@mui/material'
+import {Box, Paper, Typography, Grid} from '@mui/material'
 import { useEffect, useState } from 'react'
 import {useStyles} from './Style'
 import useColors from '../../utils/costumHooks/useColors'

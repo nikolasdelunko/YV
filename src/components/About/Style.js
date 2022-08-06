@@ -29,6 +29,7 @@ export const useStyles = makeStyles(theme => ({
     },
     conteinerCard: {
         paddingLeft: '10%',
+        marginBottom: '30px'
     },
     text: {  
         padding: '15px 5px 0 5px',
@@ -47,7 +48,7 @@ export const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
     },
     mainCard: { 
-        width: '460px',
+        maxWidth: '460px',
         height: '238px',
         left: '100px',
         top: '850px',
@@ -56,10 +57,12 @@ export const useStyles = makeStyles(theme => ({
     
 },
     mainCardExp: {
-        maxWidth: '685px',
-        height: '373px',     
+        maxWidth: '685px',   
         background: '#1D1D1D',      
-        boxShadow:' 0px 3px 3px 3px rgba(0, 0, 0, 0.15)'
+        boxShadow:' 0px 3px 3px 3px rgba(0, 0, 0, 0.15)',
+        ["@media (max-height:820px)"] : {
+            maxWidth: '485px',
+          },
     },
     cardTextUp: {
         display: 'flex',
@@ -113,5 +116,6 @@ export const useStyles = makeStyles(theme => ({
         color: '#CCCCD5',
         fontWeight: "500 !important",
         fontSize: '18px !important',
+        paddingBottom: '45px',
     }
 }))
