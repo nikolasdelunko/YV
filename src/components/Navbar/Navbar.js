@@ -7,6 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from "react-redux"
 import {openBurger} from '../../store/helpers/helpersSlice'
 import {Link} from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 
 
 
@@ -24,7 +25,7 @@ export default function Navbar() {
   return (
     <Box className={classes.navbar}>
      <Box 	className={burger ? classes.logoMenu : classes.logo}>
-     <Link  to={'/'} className={classes.linkName}  onClick={handleClose}>
+     <Link  to={'/'} className={classes.linkName}  onClick={burger ? handleClose : null}>
         <Box className={classes.nameBox}>
         <Typography variant="h5" component="h2"  className={classes.nameFirst}>
         Yar
