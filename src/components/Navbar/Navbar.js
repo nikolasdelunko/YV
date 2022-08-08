@@ -6,7 +6,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from "react-redux"
 import {openBurger} from '../../store/helpers/helpersSlice'
-import {Link} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
+import {Link} from 'react-scroll'
 
 
 
@@ -16,16 +17,21 @@ export default function Navbar() {
     const classes = useStyles() 
     const burger = useSelector((state) => state.helpers.burger)
     const dispatch = useDispatch()
-    
+    const navigate = useNavigate()
     
     const handleClose = () => {
       dispatch(openBurger(!burger))
     }
 
+    const handleSetActive = () => {
+      navigate('/')
+    }
+    // to={{pathname: '/', hash: '#project'}}
+
   return (
     <Box className={classes.navbar}>
      <Box 	className={burger ? classes.logoMenu : classes.logo}>
-     <Link  to={'/'} className={classes.linkName}  onClick={burger ? handleClose : null}>
+     <NavLink  to={'/'} className={classes.linkName}  onClick={burger ? handleClose : null}>
         <Box className={classes.nameBox}>
         <Typography variant="h5" component="h2"  className={classes.nameFirst}>
         Yar
@@ -42,16 +48,22 @@ export default function Navbar() {
         bytski
         </Typography>
         </Box>
-        </Link>
+        </NavLink>
      </Box>
      <Box className={classes.dtButtons}>
      <Stack spacing={2} direction="row">
-     <Link  to={'/about'} className={classes.link}>
-      <Button className={classes.btnHover} variant="text">about</Button>
+     <NavLink  to={'/about'} className={classes.link}>
+        <Button className={classes.btnHover} variant="text">about</Button>
+      </NavLink>
+      <Link className={classes.link} to="skills" spy={true} smooth={true} offset={-150} duration={1000} onSetActive={console.log('hahah')}>
+        <Button className={classes.btnHover} variant="text" onClick={handleSetActive}>my skills</Button>
       </Link>
-      <a className={classes.link} href="#skills"><Button className={classes.btnHover} variant="text">my skills</Button></a>
-      <Button className={classes.btnHover} variant="text">work</Button>
-      <Button className={classes.btnHover} variant="text">contact</Button>
+      <Link className={classes.link} to="project" spy={true} smooth={true} offset={-50} duration={500}>
+        <Button className={classes.btnHover} variant="text" onClick={handleSetActive}>work</Button>
+      </Link>
+      <Link className={classes.link} to="contact"  spy={true} smooth={true} offset={-150} duration={1500}>
+        <Button className={classes.btnHover} variant="text" onClick={handleSetActive}>contact</Button>
+      </Link>
      </Stack>
      </Box>
      <Box className={classes.mbButtons}

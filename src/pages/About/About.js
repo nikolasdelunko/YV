@@ -12,8 +12,8 @@ export default function About() {
   return (
     <Box className={classes.main}>
       <Abmme />
-      <Card education={true} />
-      <Card education={false} />
+      <Card education={true}/>
+      <Card education={false}/>
       <Contacts />
     </Box>
   )

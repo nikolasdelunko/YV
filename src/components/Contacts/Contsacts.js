@@ -9,7 +9,7 @@ export default function Contsacts() {
     const classes = useStyles() 
   return (
     <Box className={classes.father}>
-        <Box className={classes.textBlock}>
+        <Box className={classes.textBlock} id="contact">
         <Typography variant="h4" component="h4" color="#C8CAD6" className={classes.textHead}>Contacts</Typography>
         <Typography variant="h5" component="h4" color="#C8CAD6" className={classes.text}>verbytski@ukr.net</Typography>
         <Typography variant="h5" component="h2" color="#C8CAD6" className={classes.text}>(+380) 974 97 128</Typography>

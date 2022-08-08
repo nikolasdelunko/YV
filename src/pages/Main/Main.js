@@ -15,7 +15,7 @@ export default function Main() {
       <Header />
       <Projects />
       <Skills />
-      <Contacts id={"#faq-1"} />
+      <Contacts />
     </Box>
   )
 }
