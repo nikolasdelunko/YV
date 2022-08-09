@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {Box} from '@mui/material'
 import {useStyles} from './Style'
 import Header from '../../components/Header/Header'
@@ -9,13 +9,12 @@ import Contacts from '../../components/Contacts/Contsacts'
 
 export default function Main() {
   const classes = useStyles() 
-
   return (
     <Box className={classes.main}>
       <Header />
       <Projects />
       <Skills />
-      <Contacts />
+      <Contacts  />
     </Box>
   )
 }
