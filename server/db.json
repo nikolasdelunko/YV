@@ -70,5 +70,17 @@
             "year": "10/06/2021-17/09/2021",
             "description": "Created closed-type application for the company! Personnel training application, with tests after each training step. The customer has score bar during training and new training materials are opened upon successful completion of the test. The program was built so that after passing it, the user became a trained employee of the company!"
         }
-]
+],
+    "skills": [
+        "Experience with Figma", "React, Hooks, Redux", "Preprocessor SCSS (SASS)", "Basic knowledge Node.js", "Experience with versions control systems (Git)","Experience with MongoDB", "Gulp", "Understanding of OOP", "Experience with Postman", "Responsive Web Design"
+],
+    "myText" : [
+            "I love the work done in a quality and on time, a fan of what I do, there are always many requirements for myself as a performer. As a colleague very easy and sociable in communication"
+],
+    "contacts": [
+        {
+            "email" : "VERBYTSKI@UKR.NET",
+            "phone" : "(+380) 974 97 128"
+        }
+    ]
 }

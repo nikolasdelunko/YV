@@ -12,16 +12,13 @@ import useScroll from '../../utils/costumHooks/useScroll'
 
 
 
-
 export default function Navbar() {
     const classes = useStyles() 
     const burger = useSelector((state) => state.helpers.burger)
-    const aboutPage = useSelector((state) => state.helpers.about)
     const dispatch = useDispatch()
     const { scrollHendler } = useScroll()
 
 
-  
     const handleClose = () => {
       dispatch(openBurger(!burger))
     }

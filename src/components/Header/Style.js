@@ -49,5 +49,9 @@ export const useStyles = makeStyles(theme => ({
             border: '1px solid #FF2055 !important',
         }
 
-    }
+    },
+    link: {
+        textDecoration: 'none',
+        textAlign: 'center',
+    },
 }))

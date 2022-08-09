@@ -14,6 +14,7 @@ const useScroll = () => {
    });
    dispatch(openAbout(false))
    }
+   
    return {scrollHendler}
 }
 

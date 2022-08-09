@@ -1,11 +1,22 @@
 import React from 'react'
 import {Box, Typography, Button, Grid, } from '@mui/material'
 import {useStyles} from './Style'
-
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 
 export default function Main() {
   const classes = useStyles() 
+  const [data, setData] = useState()
+
+  const getInfo = async() => {
+    const res =  await axios.get('http://localhost:3009/myText')
+    return setData(res.data)
+}
+
+    useEffect(() => {
+     getInfo()
+    }, [])
 
   return (
     <Box className={classes.mainBox}>
@@ -19,13 +30,11 @@ export default function Main() {
         <img className={classes.photoMob} src={require('../../utils/photo/photoMain.jpg')} alt={'photo'} />
         </Box>
         <Typography variant="body2" component="h6" color="#CCCCD5" className={classes.textEl}>
-        I love the work done in a quality and on time, a fan of what I do,
-        there are always
-        many requirements for myself as a performer. As a colleague very
-          easy and
-        sociable in communication
+        {data}
         </Typography>
+        <a className={classes.link} href="tel: +38097497128">
         <Button variant="outlined" className={classes.btn}>contact me</Button>
+        </a>
       </Grid>
       <Grid item xs={12} md={6}>
       <Box className={classes.photoBox}>
