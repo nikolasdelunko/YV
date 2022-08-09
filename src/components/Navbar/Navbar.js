@@ -60,8 +60,8 @@ export default function Navbar() {
       <Link className={classes.link} to="project" spy={true} smooth={true} offset={-50} duration={500}>
         <Button className={classes.btnHover} variant="text" onClick={()=>scrollHendler(800)}>work</Button>
       </Link>
-      <Link className={classes.link} to={aboutPage ? null : `contact`}  spy={true} smooth={true} offset={-150} duration={1500}>
-        <Button className={classes.btnHover} variant="text" onClick={()=>scrollHendler(0)}>contact</Button>
+      <Link className={classes.link} to="contact"  spy={true} smooth={true} offset={-150} duration={1500}>
+        <Button className={classes.btnHover} variant="text">contact</Button>
       </Link>
      </Stack>
      </Box>
