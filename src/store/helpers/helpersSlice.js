@@ -4,6 +4,7 @@ const initialState = {
 	burger: false,
 	mobile: true,
 	about: false,
+	login: false,
 }
 
 const userSlice = createSlice({
@@ -19,9 +20,12 @@ const userSlice = createSlice({
 		openAbout(state, action) {
 			state.about = action.payload
 		},
+		setLogin(state, action) {
+			state.login = action.payload
+		},
 	}
 })
 
-export const {addMobile, openBurger, openAbout} = userSlice.actions
+export const {addMobile, openBurger, openAbout, setLogin} = userSlice.actions
 
 export default userSlice.reducer

@@ -24,9 +24,9 @@ export default function Certificate() {
         Certificate
            </Typography>
             {data?.map((item)=><img
-                 className={classes.photoMob}
+                 className={classes.photo}
                  src={`${item.link}`}
-                 srcSet={`${item.link}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                 srcSet={`${item.link}`}
                  alt={item.title}
                  loading="lazy"
       />)}

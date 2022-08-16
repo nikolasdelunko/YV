@@ -118,7 +118,7 @@ export const useStyles = makeStyles(theme => ({
         fontSize: '18px !important',
         paddingBottom: '45px',
     },
-    photoMob: {
+    photo: {
         width: "70%",
         height: '30%',
         objectFit: 'cover',
