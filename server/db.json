@@ -82,5 +82,11 @@
             "email" : "VERBYTSKI@UKR.NET",
             "phone" : "(+380) 974 97 128"
         }
+    ],
+    "certificates": [
+        {
+        "title" : "DanIt",
+        "link" : "https://telegra.ph/file/e671c83a1344ba39a1434.jpg"
+        }
     ]
 }

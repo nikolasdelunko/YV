@@ -7,6 +7,7 @@ import Contacts from '../../components/Contacts/Contsacts'
 import {useDispatch} from "react-redux"
 import {openAbout} from '../../store/helpers/helpersSlice'
 import { useEffect } from 'react';
+import Certificate from '../../components/About/Certificate'
 
 
 export default function About() {
@@ -20,6 +21,7 @@ export default function About() {
   return (
     <Box className={classes.main}>
       <Abmme />
+      <Certificate />
       <Card education={true}/>
       <Card education={false}/>
       <Contacts />
