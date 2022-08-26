@@ -4,7 +4,7 @@ const initialState = {
 	burger: false,
 	mobile: true,
 	about: false,
-	login: false,
+	login:	localStorage.getItem('user') ||false,
 }
 
 const userSlice = createSlice({

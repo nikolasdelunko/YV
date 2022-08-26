@@ -25,6 +25,8 @@ export default function AdminPanel() {
 
   const logOut = () => {
     dispatch(setLogin(false))
+    localStorage.setItem('user', false);
+    localStorage.clear()
   }
   return (
     <Box>

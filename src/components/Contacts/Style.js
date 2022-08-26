@@ -31,6 +31,7 @@ export const useStyles = makeStyles(theme => ({
     },
     btn: {
         padding: '15px 65px !important',
+        boxShadow:' 0px 3px 3px 3px rgb(0 0 0 / 15%)',
         "&:hover": {
             backgroundColor : "#FF2055 !important",
         }

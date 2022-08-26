@@ -37,6 +37,7 @@ export default function Login() {
         if(data.login === name && data.password === password){
             setLoginError(null)
             dispatch(setLogin(true))
+            localStorage.setItem('user', true);
             navigate(fromPage, {replace: true})
 
         }else{
