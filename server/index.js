@@ -21,6 +21,39 @@ const generateId = (data) => {
   return data.find((u) => u.id === id) ? generateId(users) : id;
 };
 
+app.get("/projects", async (req, res) => {
+  res.send(projects).end();
+});
+
+app.get("/about", async (req, res) => {
+  res.send(about).end();
+});
+
+app.get("/education", async (req, res) => {
+  res.send(education).end();
+});
+
+app.get("/workExp", async (req, res) => {
+  res.send(workExp).end();
+});
+
+app.get("/skills", async (req, res) => {
+  res.send(skills).end();
+});
+
+app.get("/myText", async (req, res) => {
+  res.send(myText).end();
+});
+
+app.get("/contacts", async (req, res) => {
+  res.send(contacts).end();
+});
+
+app.get("/certificates", async (req, res) => {
+  res.send(certificates).end();
+});
+
+
 app.use("/", async (req, res, next) => {
   const b64auth = (req.headers.authorization || "").split(" ")[1] || "";
   const first = Buffer.from(b64auth, "base64");
@@ -30,7 +63,7 @@ app.use("/", async (req, res, next) => {
   const username = third[0];
   const password = third[1];
 
-  const user = users.find((u) => u.profile.username === username);
+  const user = users.find((u) => u.login === username);
 
   const userNotFound = !user;
   const passwordsNotMatch = user && user.password !== password;
@@ -63,10 +96,6 @@ app.delete("/users/:id", async (req, res) => {
 });
 
 // project
-
-app.get("/projects", async (req, res) => {
-  res.send(projects).end();
-});
 
 app.post("/projects", async (req, res) => {
   const requiredKeys = ["name", "description", "photo", "link"];
@@ -111,49 +140,27 @@ app.delete("/projects/:id", async (req, res) => {
 
 /// about
 
-app.get("/about", async (req, res) => {
-  res.send(about).end();
-});
 
 //// education
 
-app.get("/education", async (req, res) => {
-  res.send(education).end();
-});
+
 
 //// work Exp
-app.get("/workExp", async (req, res) => {
-  res.send(workExp).end();
-});
 
 /// skills
 
-app.get("/skills", async (req, res) => {
-  res.send(skills).end();
-});
 
 /// myText
 
-app.get("/myText", async (req, res) => {
-  res.send(myText).end();
-});
 
 /// contacts
 
-app.get("/contacts", async (req, res) => {
-  res.send(contacts).end();
-});
 
 //certificates
 
-app.get("/certificates", async (req, res) => {
-  res.send(certificates).end();
-});
-
 /// user
-
 app.get("/user", async (req, res) => {
-  res.send(user).end();
+  res.send(users).end();
 });
 
 app.listen(process.env.APP_PORT, () => {
