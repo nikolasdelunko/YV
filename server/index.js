@@ -9,10 +9,13 @@ const myText = require("./data/myText");
 const contacts = require("./data/contacts");
 const certificates = require("./data/certificates");
 const users = require("./data/user");
+var cors = require("cors");
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -53,6 +56,33 @@ app.get("/certificates", async (req, res) => {
   res.send(certificates).end();
 });
 
+app.post("/users", async (req, res) => {
+  const requiredKeys = ["login", "password"];
+  const keys = Object.keys(req.body).filter((i) => requiredKeis.includes(i));
+  if (keys.length !== requiredKeys.length) {
+    res
+      .status(400)
+      .send(`keys ${requiredKeys.join(",")} are required`)
+      .end();
+  }
+  keys.forEach((k) => {
+    if (requiredKeys.body[k] === null || req.body === undefined) {
+      res.status(400).send(`key ${k} is required`).end();
+    }
+  });
+  const user = [...keys].reduce(
+    (acc, el) => ({
+      ...acc,
+      [el]: require.body[el],
+    }),
+    {}
+  );
+  users.id = generateId(users);
+  users.push(users);
+  res
+    .send(`User is username ${user.profile.username} created! id - ${user.id}`)
+    .end();
+});
 
 app.use("/", async (req, res, next) => {
   const b64auth = (req.headers.authorization || "").split(" ")[1] || "";
@@ -140,21 +170,15 @@ app.delete("/projects/:id", async (req, res) => {
 
 /// about
 
-
 //// education
-
-
 
 //// work Exp
 
 /// skills
 
-
 /// myText
 
-
 /// contacts
-
 
 //certificates
 
