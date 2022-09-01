@@ -3,10 +3,10 @@ const dotenv = require("dotenv");
 let projects = require("./data/project");
 const about = require("./data/about");
 let education = require("./data/education");
-const workExp = require("./data/workExp");
+let workExp = require("./data/workExp");
 const skills = require("./data/skills");
-const myText = require("./data/myText");
-const contacts = require("./data/contacts");
+let myText = require("./data/myText");
+let contacts = require("./data/contacts");
 const certificates = require("./data/certificates");
 const users = require("./data/user");
 var cors = require("cors");
@@ -243,11 +243,108 @@ app.delete("/education/:id", async (req, res) => {
 
 //// work Exp
 
-/// skills
+app.post("/workExp", async (req, res) => {
+  const requiredKeys = ["name", "specialization", "year", "description"];
+  const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
+  if (keys.length !== requiredKeys.length) {
+    res
+      .status(400)
+      .send(`keys ${requiredKeys.join(",")} are required!`)
+      .end();
+  } else {
+    keys.forEach((k) => {
+      if (req.body[k] === null || req.body === undefined) {
+        res.status(400).send(`key ${k} is required`).end();
+      }
+    });
+    const wrkExp = [...keys].reduce(
+      (acc, el) => ({ ...acc, [el]: req.body[el] }),
+      {}
+    );
+    wrkExp.id = generateId(workExp);
+    workExp.push(wrkExp);
+    res.send(`Education name: ${wrkExp.name} created! id - ${wrkExp.id}`).end();
+  }
+});
 
-/// myText
+app.delete("/workExp", async (req, res) => {
+  const lastworkExp = workExp.slice(-1);
+  workExp.pop();
+  res.send(`Last education with name: ${lastworkExp[0].name} deleted`).end();
+});
+
+app.delete("/workExp/:id", async (req, res) => {
+  let usproj = workExp.find((u) => u.id === +req.params.id);
+  if (!usproj) {
+    res.send(`education with id  ${req.params.id} not found`).end();
+  }
+  if (usproj) {
+    workExp = workExp.filter((u) => u.id != req.params.id);
+    res.send(`education with id  ${req.params.id} deleted`).end();
+  }
+});
+
+/// skills { "skill" : "here skill"} send
+
+app.post("/skills", async (req, res) => {
+  if (
+    req.body.skill === undefined ||
+    req.body.skill === null ||
+    req.body.skill.length < 3 ||
+    req.body.skill.trim() === ""
+  ) {
+    res.send("please write 1 you hard skill").end();
+  } else {
+    skills.push(req.body.skill);
+    res.send(` you succes added  skill: ${req.body.skill} `).end();
+  }
+});
+
+app.delete("/skills", async (req, res) => {
+  const lastSkill = skills.slice(-1);
+  skills.pop();
+  res.send(`${lastSkill} soft skill deleted`).end();
+});
+
+/// myText     { "text" : "Here text"}
+
+app.patch("/myText", async (req, res) => {
+  if (
+    req.body.text === undefined ||
+    req.body.text === null ||
+    req.body.text.trim() === ""
+  ) {
+    res.send("please write you text").end();
+  } else if (req.body.text.length < 25) {
+    res.send("please write 25 and more characters").end();
+  } else {
+    myText = req.body.text;
+    res.send(`Text successfuly change`).end();
+  }
+});
 
 /// contacts
+
+app.patch("/contacts", async (req, res) => {
+  if (
+    req.body.email === undefined ||
+    req.body.email === null ||
+    req.body.email.trim() === ""
+  ) {
+    res.send("please write email").end();
+  }
+  else if (
+		req.body.phone === undefined ||
+    req.body.phone === null ||
+		req.body.phone.trim() === ""
+		) {
+    res.send("please write Phone").end();
+  } else {
+    contacts[0].email = req.body.email;
+    contacts[0].phone = req.body.phone;
+    res.send(`Contacts successfuly change`).end();
+  }
+});
 
 //certificates
 
