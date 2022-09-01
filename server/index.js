@@ -323,7 +323,7 @@ app.patch("/myText", async (req, res) => {
   }
 });
 
-/// contacts
+/// contacts   { "email": "@gmail.com", "phone": "000 000 "}
 
 app.patch("/contacts", async (req, res) => {
   if (
@@ -332,12 +332,11 @@ app.patch("/contacts", async (req, res) => {
     req.body.email.trim() === ""
   ) {
     res.send("please write email").end();
-  }
-  else if (
-		req.body.phone === undefined ||
+  } else if (
+    req.body.phone === undefined ||
     req.body.phone === null ||
-		req.body.phone.trim() === ""
-		) {
+    req.body.phone.trim() === ""
+  ) {
     res.send("please write Phone").end();
   } else {
     contacts[0].email = req.body.email;
@@ -348,7 +347,34 @@ app.patch("/contacts", async (req, res) => {
 
 //certificates
 
-/// user
+app.post("/certificates", async (req, res) => {
+  const requiredKeys = ["title", "link"];
+  const keys = Object.keys(req.body).filter((i) => requiredKeys.includes(i));
+  if (keys.length !== requiredKeys.length) {
+    res
+      .status(400)
+      .send(`keys ${requiredKeys.join(",")} are required`)
+      .end();
+  } else {
+    const certificate = [...keys].reduce(
+      (acc, el) => ({ ...acc, [el]: req.body[el] }),
+      {}
+    );
+    certificate.id = generateId(certificates);
+    certificates.push(certificate);
+    res
+      .send(
+        `User is username ${certificate.title} created! id - ${certificate.id}`
+      )
+      .end();
+  }
+});
+
+app.delete("/certificates", async (req, res) => {
+  let last = certificates.slice(-1);
+  certificates.pop();
+  res.send(`user ${last[0].title} with id  ${last[0].id} deleted`).end();
+});
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`app start on port ${process.env.APP_PORT}`);

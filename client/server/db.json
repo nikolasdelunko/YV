@@ -102,13 +102,14 @@
   ],
   "certificates": [
     {
+			"id": 1,
       "title": "DanIt",
       "link": "https://telegra.ph/file/e671c83a1344ba39a1434.jpg"
     }
   ],
   "user": [
     {
-      "id": "1",
+      "id": 1,
       "login": "Yaroslav",
       "password": "Nastya123"
     }
