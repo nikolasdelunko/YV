@@ -56,34 +56,6 @@ app.get("/certificates", async (req, res) => {
   res.send(certificates).end();
 });
 
-app.post("/users", async (req, res) => {
-  const requiredKeys = ["login", "password"];
-  const keys = Object.keys(req.body).filter((i) => requiredKeis.includes(i));
-  if (keys.length !== requiredKeys.length) {
-    res
-      .status(400)
-      .send(`keys ${requiredKeys.join(",")} are required`)
-      .end();
-  }
-  keys.forEach((k) => {
-    if (requiredKeys.body[k] === null || req.body === undefined) {
-      res.status(400).send(`key ${k} is required`).end();
-    }
-  });
-  const user = [...keys].reduce(
-    (acc, el) => ({
-      ...acc,
-      [el]: require.body[el],
-    }),
-    {}
-  );
-  users.id = generateId(users);
-  users.push(users);
-  res
-    .send(`User is username ${user.profile.username} created! id - ${user.id}`)
-    .end();
-});
-
 app.use("/", async (req, res, next) => {
   const b64auth = (req.headers.authorization || "").split(" ")[1] || "";
   const first = Buffer.from(b64auth, "base64");
@@ -116,13 +88,42 @@ app.use("/users/:id", async (req, res, nex) => {
   nex();
 });
 
-app.get("/users/:id", async (req, res) => {
-  res.send(req.currentUser).end();
+app.post("/users", async (req, res) => {
+  const requiredKeys = ["login", "password"];
+  const keys = Object.keys(req.body).filter((i) => requiredKeys.includes(i));
+  if (keys.length !== requiredKeys.length) {
+    res
+      .status(400)
+      .send(`keys ${requiredKeys.join(",")} are required`)
+      .end();
+  }
+  keys.forEach((k) => {
+    if (req.body[k] === null || req.body === undefined) {
+      res.status(400).send(`key ${k} is required`).end();
+    }
+  });
+  const user = [...keys].reduce(
+    (acc, el) => ({ ...acc, [el]: req.body[el] }),
+    {}
+  );
+  user.id = generateId(users);
+  users.push(user);
+  res.send(`User is username ${user.login} created! id - ${user.id}`).end();
 });
 
-app.delete("/users/:id", async (req, res) => {
-  users = users.filter((u) => u.id !== req.user.id);
-  res.send(`user with id  ${req.user.id} deleted`).end();
+// app.get("/users/:id", async (req, res) => {
+//   res.send(req.user.id).end();
+// });
+
+app.delete("/users", async (req, res) => {
+  if (users.length === 1) {
+    res.send(`no optional users found`).end();
+  }
+  if (users.length > 1) {
+    let lastUser = users.slice(-1);
+    users.pop();
+    res.send(`user ${lastUser[0].login} with id  ${lastUser[0].id} deleted`).end();
+  }
 });
 
 // project
@@ -183,7 +184,7 @@ app.delete("/projects/:id", async (req, res) => {
 //certificates
 
 /// user
-app.get("/user", async (req, res) => {
+app.get("/users", async (req, res) => {
   res.send(users).end();
 });
 
