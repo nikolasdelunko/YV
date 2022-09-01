@@ -88,6 +88,12 @@ app.use("/users/:id", async (req, res, nex) => {
   nex();
 });
 
+// users
+
+app.get("/users", async (req, res) => {
+  res.send(users).end();
+});
+
 app.post("/users", async (req, res) => {
   const requiredKeys = ["login", "password"];
   const keys = Object.keys(req.body).filter((i) => requiredKeys.includes(i));
@@ -111,9 +117,9 @@ app.post("/users", async (req, res) => {
   res.send(`User is username ${user.login} created! id - ${user.id}`).end();
 });
 
-// app.get("/users/:id", async (req, res) => {
-//   res.send(req.user.id).end();
-// });
+app.get("/users/:id", async (req, res) => {
+  res.send(req.user).end();
+});
 
 app.delete("/users", async (req, res) => {
   if (users.length === 1) {
@@ -122,7 +128,9 @@ app.delete("/users", async (req, res) => {
   if (users.length > 1) {
     let lastUser = users.slice(-1);
     users.pop();
-    res.send(`user ${lastUser[0].login} with id  ${lastUser[0].id} deleted`).end();
+    res
+      .send(`user ${lastUser[0].login} with id  ${lastUser[0].id} deleted`)
+      .end();
   }
 });
 
@@ -171,6 +179,27 @@ app.delete("/projects/:id", async (req, res) => {
 
 /// about
 
+//// post need { "skill" : ""} send
+app.post("/about", async (req, res) => {
+  if (
+    req.body.skill === undefined ||
+    req.body.skill === null ||
+    req.body.skill.length < 3 ||
+    req.body.skill.trim() === ""
+  ) {
+    res.send("please write 1 you soft skill").end();
+  } else {
+    about.push(req.body.skill);
+    res.send(` you succes added  skill: ${req.body.skill} `).end();
+  }
+});
+
+app.delete("/about", async (req, res) => {
+	const lastSkill = about.slice(-1)
+	about.pop();
+  res.send(`${lastSkill} soft skill deleted`).end();
+});
+
 //// education
 
 //// work Exp
@@ -184,9 +213,6 @@ app.delete("/projects/:id", async (req, res) => {
 //certificates
 
 /// user
-app.get("/users", async (req, res) => {
-  res.send(users).end();
-});
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`app start on port ${process.env.APP_PORT}`);
