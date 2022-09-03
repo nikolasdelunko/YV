@@ -9,9 +9,13 @@ let myText = require("./data/myText");
 let contacts = require("./data/contacts");
 const certificates = require("./data/certificates");
 const users = require("./data/user");
-var cors = require("cors");
+let cors = require("cors");
+const mongoose = require("mongoose");
+const projectRouter = require("./api/project/index")
 
 dotenv.config();
+
+const connectionString = process.env.CONNECTION_STRING;
 
 const app = express();
 
@@ -19,14 +23,17 @@ app.use(cors());
 
 app.use(express.json());
 
+app.use(projectRouter);
+
 const generateId = (data) => {
   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
   return data.find((u) => u.id === id) ? generateId(data) : id;
 };
 
-app.get("/projects", async (req, res) => {
-  res.send(projects).end();
-});
+// ? check mongoDB and Routers
+// app.get("/projects", async (req, res) => {
+//   res.send(projects).end();
+// });
 
 app.get("/about", async (req, res) => {
   res.send(about).end();
@@ -56,28 +63,6 @@ app.get("/certificates", async (req, res) => {
   res.send(certificates).end();
 });
 
-app.use("/", async (req, res, next) => {
-  const b64auth = (req.headers.authorization || "").split(" ")[1] || "";
-  const first = Buffer.from(b64auth, "base64");
-  const second = first.toString();
-  const third = second.split(":");
-
-  const username = third[0];
-  const password = third[1];
-
-  const user = users.find((u) => u.login === username);
-
-  const userNotFound = !user;
-  const passwordsNotMatch = user && user.password !== password;
-  if (userNotFound || passwordsNotMatch) {
-    res.status(401).send({
-      message: userNotFound ? "User not found" : "Passwords not math",
-    });
-    return;
-  }
-  req.currentUser = user;
-  next();
-});
 
 app.use("/users/:id", async (req, res, nex) => {
   let user = users.find((u) => u.id === +req.params.id);
@@ -88,7 +73,7 @@ app.use("/users/:id", async (req, res, nex) => {
   nex();
 });
 
-// users
+//* users
 
 app.get("/users", async (req, res) => {
   res.send(users).end();
@@ -134,50 +119,51 @@ app.delete("/users", async (req, res) => {
   }
 });
 
-// project
+//* project look in mongo DB
 
-app.post("/projects", async (req, res) => {
-  const requiredKeys = ["name", "description", "photo", "link"];
-  const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
-  if (keys.length !== requiredKeys.length) {
-    res
-      .status(400)
-      .send(`keys ${requiredKeys.join(",")} are required!`)
-      .end();
-  }
-  keys.forEach((k) => {
-    if (req.body[k] === null || req.body === undefined) {
-      res.status(400).send(`key ${k} is required`).end();
-    }
-  });
-  const project = [...keys].reduce(
-    (acc, el) => ({ ...acc, [el]: req.body[el] }),
-    {}
-  );
-  project.id = generateId(projects);
-  projects.push(project);
-  res.send(`Project name: ${project.name} created! id - ${project.id}`).end();
-});
+// app.post("/projects", async (req, res) => {
+//   const requiredKeys = ["name", "description", "photo", "link"];
+//   const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
+//   if (keys.length !== requiredKeys.length) {
+//     res
+//       .status(400)
+//       .send(`keys ${requiredKeys.join(",")} are required!`)
+//       .end();
+//   }
+//   keys.forEach((k) => {
+//     if (req.body[k] === null || req.body === undefined) {
+//       res.status(400).send(`key ${k} is required`).end();
+//     }
+//   });
+//   const project = [...keys].reduce(
+//     (acc, el) => ({ ...acc, [el]: req.body[el] }),
+//     {}
+//   );
+//   project.id = generateId(projects);
+//   projects.push(project);
+//   res.send(`Project name: ${project.name} created! id - ${project.id}`).end();
+// });
 
-app.delete("/projects", async (req, res) => {
-  projects.pop();
-  res.send(`Last project deleted`).end();
-});
+// app.delete("/projects", async (req, res) => {
+//   projects.pop();
+//   res.send(`Last project deleted`).end();
+// });
 
-app.delete("/projects/:id", async (req, res) => {
-  let usproj = projects.find((u) => u.id === +req.params.id);
-  if (!usproj) {
-    res.send(`project with id  ${req.params.id} not found`).end();
-  }
-  if (usproj) {
-    projects = projects.filter((u) => u.id != req.params.id);
-    res.send(`project with id  ${req.params.id} deleted`).end();
-  }
-});
+// app.delete("/projects/:id", async (req, res) => {
+//   let usproj = projects.find((u) => u.id === +req.params.id);
+//   if (!usproj) {
+//     res.send(`project with id  ${req.params.id} not found`).end();
+//   }
+//   if (usproj) {
+//     projects = projects.filter((u) => u.id != req.params.id);
+//     res.send(`project with id  ${req.params.id} deleted`).end();
+//   }
+// });
 
-/// about
+///* about
 
-//// post need { "skill" : "here skill"} send
+//! post need { "skill" : "here skill"} send
+
 app.post("/about", async (req, res) => {
   if (
     req.body.skill === undefined ||
@@ -198,7 +184,7 @@ app.delete("/about", async (req, res) => {
   res.send(`${lastSkill} soft skill deleted`).end();
 });
 
-//// education
+//* education
 
 app.post("/education", async (req, res) => {
   const requiredKeys = ["name", "specialization", "year"];
@@ -241,7 +227,7 @@ app.delete("/education/:id", async (req, res) => {
   }
 });
 
-//// work Exp
+//* work Exp
 
 app.post("/workExp", async (req, res) => {
   const requiredKeys = ["name", "specialization", "year", "description"];
@@ -284,7 +270,7 @@ app.delete("/workExp/:id", async (req, res) => {
   }
 });
 
-/// skills { "skill" : "here skill"} send
+//! skills { "skill" : "here skill"} send
 
 app.post("/skills", async (req, res) => {
   if (
@@ -306,7 +292,7 @@ app.delete("/skills", async (req, res) => {
   res.send(`${lastSkill} soft skill deleted`).end();
 });
 
-/// myText     { "text" : "Here text"}
+//! myText     { "text" : "Here text"}
 
 app.patch("/myText", async (req, res) => {
   if (
@@ -323,7 +309,7 @@ app.patch("/myText", async (req, res) => {
   }
 });
 
-/// contacts   { "email": "@gmail.com", "phone": "000 000 "}
+//! contacts   { "email": "@gmail.com", "phone": "000 000 "}
 
 app.patch("/contacts", async (req, res) => {
   if (
@@ -345,7 +331,7 @@ app.patch("/contacts", async (req, res) => {
   }
 });
 
-//certificates
+//* certificates
 
 app.post("/certificates", async (req, res) => {
   const requiredKeys = ["title", "link"];
@@ -376,6 +362,16 @@ app.delete("/certificates", async (req, res) => {
   res.send(`user ${last[0].title} with id  ${last[0].id} deleted`).end();
 });
 
-app.listen(process.env.APP_PORT, () => {
-  console.log(`app start on port ${process.env.APP_PORT}`);
-});
+mongoose
+  .connect(connectionString, {
+    useNewUrlParser: true,
+  })
+  .then(async () => {
+    app.listen(process.env.APP_PORT, () => {
+      console.log(`app start on port ${process.env.APP_PORT}`);
+    });
+  });
+
+// app.listen(process.env.APP_PORT, () => {
+//   console.log(`app start on port ${process.env.APP_PORT}`);
+// });
