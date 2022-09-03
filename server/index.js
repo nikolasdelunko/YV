@@ -1,9 +1,5 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const about = require("./data/about");
-let education = require("./data/education");
-let workExp = require("./data/workExp");
-const skills = require("./data/skills");
 let myText = require("./data/myText");
 let contacts = require("./data/contacts");
 const certificates = require("./data/certificates");
@@ -12,7 +8,9 @@ let cors = require("cors");
 const mongoose = require("mongoose");
 const projectRouter = require("./api/project/index");
 const educationRouter = require("./api/education/index");
-
+const aboutRouter = require("./api/about/index");
+const workRouter = require("./api/workExp/index");
+const skillsRouter = require("./api/skills/index");
 
 dotenv.config();
 
@@ -25,30 +23,15 @@ app.use(cors());
 app.use(express.json());
 
 app.use(projectRouter);
-app.use(educationRouter)
+app.use(educationRouter);
+app.use(aboutRouter);
+app.use(workRouter);
+app.use(skillsRouter)
 
 const generateId = (data) => {
   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
   return data.find((u) => u.id === id) ? generateId(data) : id;
 };
-
-
-app.get("/about", async (req, res) => {
-  res.send(about).end();
-});
-
-// ? check mongoDB and Routers
-// app.get("/education", async (req, res) => {
-//   res.send(education).end();
-// });
-
-app.get("/workExp", async (req, res) => {
-  res.send(workExp).end();
-});
-
-app.get("/skills", async (req, res) => {
-  res.send(skills).end();
-});
 
 app.get("/myText", async (req, res) => {
   res.send(myText).end();
@@ -61,7 +44,6 @@ app.get("/contacts", async (req, res) => {
 app.get("/certificates", async (req, res) => {
   res.send(certificates).end();
 });
-
 
 app.use("/users/:id", async (req, res, nex) => {
   let user = users.find((u) => u.id === +req.params.id);
@@ -118,138 +100,13 @@ app.delete("/users", async (req, res) => {
   }
 });
 
-
 ///* about
 
 //! post need { "skill" : "here skill"} send
 
-app.post("/about", async (req, res) => {
-  if (
-    req.body.skill === undefined ||
-    req.body.skill === null ||
-    req.body.skill.length < 3 ||
-    req.body.skill.trim() === ""
-  ) {
-    res.send("please write 1 you soft skill").end();
-  } else {
-    about.push(req.body.skill);
-    res.send(` you succes added  skill: ${req.body.skill} `).end();
-  }
-});
-
-app.delete("/about", async (req, res) => {
-  const lastSkill = about.slice(-1);
-  about.pop();
-  res.send(`${lastSkill} soft skill deleted`).end();
-});
-
-//? education   check & delete
-
-// app.post("/education", async (req, res) => {
-//   const requiredKeys = ["name", "specialization", "year"];
-//   const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
-//   if (keys.length !== requiredKeys.length) {
-//     res
-//       .status(400)
-//       .send(`keys ${requiredKeys.join(",")} are required!`)
-//       .end();
-//   } else {
-//     keys.forEach((k) => {
-//       if (req.body[k] === null || req.body === undefined) {
-//         res.status(400).send(`key ${k} is required`).end();
-//       }
-//     });
-//     const edu = [...keys].reduce(
-//       (acc, el) => ({ ...acc, [el]: req.body[el] }),
-//       {}
-//     );
-//     edu.id = generateId(education);
-//     education.push(edu);
-//     res.send(`Education name: ${edu.name} created! id - ${edu.id}`).end();
-//   }
-// });
-
-// app.delete("/education", async (req, res) => {
-//   const lastEdu = education.slice(-1);
-//   education.pop();
-//   res.send(`Last education with name: ${lastEdu[0].name} deleted`).end();
-// });
-
-// app.delete("/education/:id", async (req, res) => {
-//   let usproj = education.find((u) => u.id === +req.params.id);
-//   if (!usproj) {
-//     res.send(`education with id  ${req.params.id} not found`).end();
-//   }
-//   if (usproj) {
-//     education = education.filter((u) => u.id != req.params.id);
-//     res.send(`education with id  ${req.params.id} deleted`).end();
-//   }
-// });
-
-//* work Exp
-
-app.post("/workExp", async (req, res) => {
-  const requiredKeys = ["name", "specialization", "year", "description"];
-  const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
-  if (keys.length !== requiredKeys.length) {
-    res
-      .status(400)
-      .send(`keys ${requiredKeys.join(",")} are required!`)
-      .end();
-  } else {
-    keys.forEach((k) => {
-      if (req.body[k] === null || req.body === undefined) {
-        res.status(400).send(`key ${k} is required`).end();
-      }
-    });
-    const wrkExp = [...keys].reduce(
-      (acc, el) => ({ ...acc, [el]: req.body[el] }),
-      {}
-    );
-    wrkExp.id = generateId(workExp);
-    workExp.push(wrkExp);
-    res.send(`Education name: ${wrkExp.name} created! id - ${wrkExp.id}`).end();
-  }
-});
-
-app.delete("/workExp", async (req, res) => {
-  const lastworkExp = workExp.slice(-1);
-  workExp.pop();
-  res.send(`Last education with name: ${lastworkExp[0].name} deleted`).end();
-});
-
-app.delete("/workExp/:id", async (req, res) => {
-  let usproj = workExp.find((u) => u.id === +req.params.id);
-  if (!usproj) {
-    res.send(`education with id  ${req.params.id} not found`).end();
-  }
-  if (usproj) {
-    workExp = workExp.filter((u) => u.id != req.params.id);
-    res.send(`education with id  ${req.params.id} deleted`).end();
-  }
-});
 
 //! skills { "skill" : "here skill"} send
 
-app.post("/skills", async (req, res) => {
-  if (
-    req.body.skill === undefined ||
-    req.body.skill === null ||
-    req.body.skill.length < 3 ||
-    req.body.skill.trim() === ""
-  ) {
-    res.send("please write 1 you hard skill").end();
-  } else {
-    skills.push(req.body.skill);
-    res.send(` you succes added  skill: ${req.body.skill} `).end();
-  }
-});
-
-app.delete("/skills", async (req, res) => {
-  const lastSkill = skills.slice(-1);
-  skills.pop();
-  res.send(`${lastSkill} soft skill deleted`).end();
-});
 
 //! myText     { "text" : "Here text"}
 

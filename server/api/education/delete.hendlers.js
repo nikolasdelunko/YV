@@ -16,7 +16,11 @@ exports.deleteEducation = async (req, res) => {
     res.status(404).send(`education not found`).end();
   } else {
     const lastEdu = education.slice(-1);
-    await Education.findByIdAndDelete(lastEdu[0]._id).exec();
-    res.send("Last education deleted").end();
+    await Education.findByIdAndDelete(
+      lastEdu.length ? lastEdu[0]._id : null
+    ).exec();
+    res
+      .send(lastEdu.length ? "Last education deleted" : "no education found")
+      .end();
   }
 };
