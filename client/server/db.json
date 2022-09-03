@@ -1,0 +1,117 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "FORKIO",
+      "description": "Technology stack: HTML5, JavaScript, SASS, Gulp,Adaptive and responsive",
+      "photo": "https://telegra.ph/file/f74607e0aa426c14eb72c.jpg",
+      "link": "https://nikolasdelunko.github.io/Forkio-/"
+    },
+    {
+      "id": 2,
+      "name": "Doctor-cards",
+      "description": "email: lili@gmail.com password: 12345 Technology stack: HTML5 / JavaScript / SASS, Gulp / Cross Browser / OOP.",
+      "photo": "https://telegra.ph/file/17f1e4d8fa56b9f17c3e7.jpg",
+      "link": "https://nikolasdelunko.github.io/DoctorCards/"
+    },
+    {
+      "id": 3,
+      "name": "Postil bedding shop",
+      "description": "Technology stack: HTML5 / JavaScript / React JS / Redux toolkit /Node.js / Material UI / Formik / Yup / React Transition Group / ESLint / Husky / Helmet / Travis CI",
+      "photo": "https://telegra.ph/file/78c693a1df3c9e0e6f74e.jpg",
+      "link": "https://fp-postil-bedding.herokuapp.com/"
+    },
+    {
+      "id": 4,
+      "name": "What People Say About theHam",
+      "description": "Technology stack: HTML5 / JavaScript / CSS / Adaptive and responsive",
+      "photo": "https://telegra.ph/file/cfc247ca6047f09655cb7.jpg",
+      "link": "https://22yv.short.gy/TheHam"
+    },
+    {
+      "id": 5,
+      "name": "Online-wallet",
+      "description": "Technology stack: HTML5 / JavaScript / CSS / Adaptive and responsive / React / Rd3 / Redux /",
+      "photo": "https://telegra.ph/file/8f0bd08c694d4e3f94ce6.jpg",
+      "link": ""
+    }
+  ],
+  "about": [
+    "Teamwork",
+    "Analytical mind",
+    "Learnability",
+    "Motivation",
+    "Multitasking",
+    "Stress tolerance",
+    "Constant growth",
+    "Working on Errors",
+    "Sociability"
+  ],
+  "education": [
+    {
+      "id": 1,
+      "name": "DAN IT",
+      "link": "https://dan-it.com.ua",
+      "specialization": "Front-end developer",
+      "year": "02/01/2021 – 24/12/2021"
+    },
+    {
+      "id": 2,
+      "name": "KTEP",
+      "link": "https://xn--e1ajqk.kiev.ua/",
+      "specialization": "Software Engineering",
+      "year": "01/09/2012 – 01/09/2016"
+    }
+  ],
+  "workExp": [
+    {
+      "id": 1,
+      "name": "water energy ",
+      "specialization": "Front-end developer",
+      "year": "10/06/2021-17/09/2021",
+      "description": "Created closed-type application for the company! Personnel training application, with tests after each training step. The customer has score bar during training and new training materials are opened upon successful completion of the test. The program was built so that after passing it, the user became a trained employee of the company!"
+    },
+    {
+      "id": 1,
+      "name": "water energy ",
+      "specialization": "Front-end developer",
+      "year": "10/06/2021-17/09/2021",
+      "description": "Created closed-type application for the company! Personnel training application, with tests after each training step. The customer has score bar during training and new training materials are opened upon successful completion of the test. The program was built so that after passing it, the user became a trained employee of the company!"
+    }
+  ],
+  "skills": [
+    "Experience with Figma",
+    "React, Hooks, Redux",
+    "Preprocessor SCSS (SASS)",
+    "Basic knowledge Node.js",
+    "Experience with versions control systems (Git)",
+    "Experience with MongoDB",
+    "Gulp",
+    "Understanding of OOP",
+    "Experience with Postman",
+    "Responsive Web Design"
+  ],
+  "myText": [
+    "I love the work done in a quality and on time, a fan of what I do, there are always many requirements for myself as a performer. As a colleague very easy and sociable in communication"
+  ],
+  "contacts": [
+    {
+      "email": "VERBYTSKI@UKR.NET",
+      "phone": "(+380) 974 97 128"
+    }
+  ],
+  "certificates": [
+    {
+			"id": 1,
+      "title": "DanIt",
+      "link": "https://telegra.ph/file/e671c83a1344ba39a1434.jpg"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "login": "Yaroslav",
+      "password": "Nastya123"
+    }
+  ]
+}
