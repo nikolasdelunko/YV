@@ -1,6 +1,5 @@
 const express = require("express");
 const dotenv = require("dotenv");
-let projects = require("./data/project");
 const about = require("./data/about");
 let education = require("./data/education");
 let workExp = require("./data/workExp");
@@ -11,7 +10,9 @@ const certificates = require("./data/certificates");
 const users = require("./data/user");
 let cors = require("cors");
 const mongoose = require("mongoose");
-const projectRouter = require("./api/project/index")
+const projectRouter = require("./api/project/index");
+const educationRouter = require("./api/education/index");
+
 
 dotenv.config();
 
@@ -24,24 +25,22 @@ app.use(cors());
 app.use(express.json());
 
 app.use(projectRouter);
+app.use(educationRouter)
 
 const generateId = (data) => {
   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
   return data.find((u) => u.id === id) ? generateId(data) : id;
 };
 
-// ? check mongoDB and Routers
-// app.get("/projects", async (req, res) => {
-//   res.send(projects).end();
-// });
 
 app.get("/about", async (req, res) => {
   res.send(about).end();
 });
 
-app.get("/education", async (req, res) => {
-  res.send(education).end();
-});
+// ? check mongoDB and Routers
+// app.get("/education", async (req, res) => {
+//   res.send(education).end();
+// });
 
 app.get("/workExp", async (req, res) => {
   res.send(workExp).end();
@@ -119,46 +118,6 @@ app.delete("/users", async (req, res) => {
   }
 });
 
-//* project look in mongo DB
-
-// app.post("/projects", async (req, res) => {
-//   const requiredKeys = ["name", "description", "photo", "link"];
-//   const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
-//   if (keys.length !== requiredKeys.length) {
-//     res
-//       .status(400)
-//       .send(`keys ${requiredKeys.join(",")} are required!`)
-//       .end();
-//   }
-//   keys.forEach((k) => {
-//     if (req.body[k] === null || req.body === undefined) {
-//       res.status(400).send(`key ${k} is required`).end();
-//     }
-//   });
-//   const project = [...keys].reduce(
-//     (acc, el) => ({ ...acc, [el]: req.body[el] }),
-//     {}
-//   );
-//   project.id = generateId(projects);
-//   projects.push(project);
-//   res.send(`Project name: ${project.name} created! id - ${project.id}`).end();
-// });
-
-// app.delete("/projects", async (req, res) => {
-//   projects.pop();
-//   res.send(`Last project deleted`).end();
-// });
-
-// app.delete("/projects/:id", async (req, res) => {
-//   let usproj = projects.find((u) => u.id === +req.params.id);
-//   if (!usproj) {
-//     res.send(`project with id  ${req.params.id} not found`).end();
-//   }
-//   if (usproj) {
-//     projects = projects.filter((u) => u.id != req.params.id);
-//     res.send(`project with id  ${req.params.id} deleted`).end();
-//   }
-// });
 
 ///* about
 
@@ -184,48 +143,48 @@ app.delete("/about", async (req, res) => {
   res.send(`${lastSkill} soft skill deleted`).end();
 });
 
-//* education
+//? education   check & delete
 
-app.post("/education", async (req, res) => {
-  const requiredKeys = ["name", "specialization", "year"];
-  const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
-  if (keys.length !== requiredKeys.length) {
-    res
-      .status(400)
-      .send(`keys ${requiredKeys.join(",")} are required!`)
-      .end();
-  } else {
-    keys.forEach((k) => {
-      if (req.body[k] === null || req.body === undefined) {
-        res.status(400).send(`key ${k} is required`).end();
-      }
-    });
-    const edu = [...keys].reduce(
-      (acc, el) => ({ ...acc, [el]: req.body[el] }),
-      {}
-    );
-    edu.id = generateId(education);
-    education.push(edu);
-    res.send(`Education name: ${edu.name} created! id - ${edu.id}`).end();
-  }
-});
+// app.post("/education", async (req, res) => {
+//   const requiredKeys = ["name", "specialization", "year"];
+//   const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
+//   if (keys.length !== requiredKeys.length) {
+//     res
+//       .status(400)
+//       .send(`keys ${requiredKeys.join(",")} are required!`)
+//       .end();
+//   } else {
+//     keys.forEach((k) => {
+//       if (req.body[k] === null || req.body === undefined) {
+//         res.status(400).send(`key ${k} is required`).end();
+//       }
+//     });
+//     const edu = [...keys].reduce(
+//       (acc, el) => ({ ...acc, [el]: req.body[el] }),
+//       {}
+//     );
+//     edu.id = generateId(education);
+//     education.push(edu);
+//     res.send(`Education name: ${edu.name} created! id - ${edu.id}`).end();
+//   }
+// });
 
-app.delete("/education", async (req, res) => {
-  const lastEdu = education.slice(-1);
-  education.pop();
-  res.send(`Last education with name: ${lastEdu[0].name} deleted`).end();
-});
+// app.delete("/education", async (req, res) => {
+//   const lastEdu = education.slice(-1);
+//   education.pop();
+//   res.send(`Last education with name: ${lastEdu[0].name} deleted`).end();
+// });
 
-app.delete("/education/:id", async (req, res) => {
-  let usproj = education.find((u) => u.id === +req.params.id);
-  if (!usproj) {
-    res.send(`education with id  ${req.params.id} not found`).end();
-  }
-  if (usproj) {
-    education = education.filter((u) => u.id != req.params.id);
-    res.send(`education with id  ${req.params.id} deleted`).end();
-  }
-});
+// app.delete("/education/:id", async (req, res) => {
+//   let usproj = education.find((u) => u.id === +req.params.id);
+//   if (!usproj) {
+//     res.send(`education with id  ${req.params.id} not found`).end();
+//   }
+//   if (usproj) {
+//     education = education.filter((u) => u.id != req.params.id);
+//     res.send(`education with id  ${req.params.id} deleted`).end();
+//   }
+// });
 
 //* work Exp
 
