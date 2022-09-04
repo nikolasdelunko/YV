@@ -1,8 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-// let myText = require("./data/myText");
 let contacts = require("./data/contacts");
-const certificates = require("./data/certificates");
+// const certificates = require("./data/certificates");
 const users = require("./data/user");
 let cors = require("cors");
 const mongoose = require("mongoose");
@@ -11,7 +10,8 @@ const educationRouter = require("./api/education/index");
 const aboutRouter = require("./api/about/index");
 const workRouter = require("./api/workExp/index");
 const skillsRouter = require("./api/skills/index");
-const myTextRouter = require("./api/myText/index")
+const myTextRouter = require("./api/myText/index");
+const certificatesRouter = require("./api/certificates/index");
 
 dotenv.config();
 
@@ -27,22 +27,22 @@ app.use(projectRouter);
 app.use(educationRouter);
 app.use(aboutRouter);
 app.use(workRouter);
-app.use(skillsRouter)
-app.use(myTextRouter)
+app.use(skillsRouter);
+app.use(myTextRouter);
+app.use(certificatesRouter);
 
 const generateId = (data) => {
   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
   return data.find((u) => u.id === id) ? generateId(data) : id;
 };
 
-
 app.get("/contacts", async (req, res) => {
   res.send(contacts).end();
 });
 
-app.get("/certificates", async (req, res) => {
-  res.send(certificates).end();
-});
+// app.get("/certificates", async (req, res) => {
+//   res.send(certificates).end();
+// });
 
 app.use("/users/:id", async (req, res, nex) => {
   let user = users.find((u) => u.id === +req.params.id);
@@ -103,12 +103,9 @@ app.delete("/users", async (req, res) => {
 
 //! post need { "skill" : "here skill"} send
 
-
 //! skills { "skill" : "here skill"} send
 
-
 //! myText     { "text" : "Here text"}
-
 
 //! contacts   { "email": "@gmail.com", "phone": "000 000 "}
 
@@ -134,34 +131,34 @@ app.patch("/contacts", async (req, res) => {
 
 //* certificates
 
-app.post("/certificates", async (req, res) => {
-  const requiredKeys = ["title", "link"];
-  const keys = Object.keys(req.body).filter((i) => requiredKeys.includes(i));
-  if (keys.length !== requiredKeys.length) {
-    res
-      .status(400)
-      .send(`keys ${requiredKeys.join(",")} are required`)
-      .end();
-  } else {
-    const certificate = [...keys].reduce(
-      (acc, el) => ({ ...acc, [el]: req.body[el] }),
-      {}
-    );
-    certificate.id = generateId(certificates);
-    certificates.push(certificate);
-    res
-      .send(
-        `User is username ${certificate.title} created! id - ${certificate.id}`
-      )
-      .end();
-  }
-});
+// app.post("/certificates", async (req, res) => {
+//   const requiredKeys = ["title", "link"];
+//   const keys = Object.keys(req.body).filter((i) => requiredKeys.includes(i));
+//   if (keys.length !== requiredKeys.length) {
+//     res
+//       .status(400)
+//       .send(`keys ${requiredKeys.join(",")} are required`)
+//       .end();
+//   } else {
+//     const certificate = [...keys].reduce(
+//       (acc, el) => ({ ...acc, [el]: req.body[el] }),
+//       {}
+//     );
+//     certificate.id = generateId(certificates);
+//     certificates.push(certificate);
+//     res
+//       .send(
+//         `User is username ${certificate.title} created! id - ${certificate.id}`
+//       )
+//       .end();
+//   }
+// });
 
-app.delete("/certificates", async (req, res) => {
-  let last = certificates.slice(-1);
-  certificates.pop();
-  res.send(`user ${last[0].title} with id  ${last[0].id} deleted`).end();
-});
+// app.delete("/certificates", async (req, res) => {
+//   let last = certificates.slice(-1);
+//   certificates.pop();
+//   res.send(`user ${last[0].title} with id  ${last[0].id} deleted`).end();
+// });
 
 mongoose
   .connect(connectionString, {
