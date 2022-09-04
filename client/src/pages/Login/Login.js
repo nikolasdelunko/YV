@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../store/helpers/helpersSlice";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function Login() {
   const classes = useStyles();
@@ -17,9 +18,10 @@ export default function Login() {
   const [data, setData] = useState();
 
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/user");
+    const res = await axios.get("http://localhost:3009/users");
     return setData(res.data[0]);
   };
+  console.log(!!data);
 
   useEffect(() => {
     getInfo();
@@ -74,9 +76,18 @@ export default function Login() {
           onChange={handleChangePass}
         />
       </Box>
-      <Button variant="outlined" className={classes.btn} type="submit">
-        LOGIN
-      </Button>
+      {!!data ? (
+        <Button
+          variant="outlined"
+          className={classes.btn}
+          type="submit"
+          disabled={!!data ? false : true}
+        >
+          LOGIN
+        </Button>
+      ) : (
+        <Spinner />
+      )}
     </form>
   );
 }
