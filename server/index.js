@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-let myText = require("./data/myText");
+// let myText = require("./data/myText");
 let contacts = require("./data/contacts");
 const certificates = require("./data/certificates");
 const users = require("./data/user");
@@ -11,6 +11,7 @@ const educationRouter = require("./api/education/index");
 const aboutRouter = require("./api/about/index");
 const workRouter = require("./api/workExp/index");
 const skillsRouter = require("./api/skills/index");
+const myTextRouter = require("./api/myText/index")
 
 dotenv.config();
 
@@ -27,15 +28,13 @@ app.use(educationRouter);
 app.use(aboutRouter);
 app.use(workRouter);
 app.use(skillsRouter)
+app.use(myTextRouter)
 
 const generateId = (data) => {
   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
   return data.find((u) => u.id === id) ? generateId(data) : id;
 };
 
-app.get("/myText", async (req, res) => {
-  res.send(myText).end();
-});
 
 app.get("/contacts", async (req, res) => {
   res.send(contacts).end();
@@ -110,20 +109,6 @@ app.delete("/users", async (req, res) => {
 
 //! myText     { "text" : "Here text"}
 
-app.patch("/myText", async (req, res) => {
-  if (
-    req.body.text === undefined ||
-    req.body.text === null ||
-    req.body.text.trim() === ""
-  ) {
-    res.send("please write you text").end();
-  } else if (req.body.text.length < 25) {
-    res.send("please write 25 and more characters").end();
-  } else {
-    myText = req.body.text;
-    res.send(`Text successfuly change`).end();
-  }
-});
 
 //! contacts   { "email": "@gmail.com", "phone": "000 000 "}
 
