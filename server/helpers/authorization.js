@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 
-const users = require("../data/user");
+const users = require("./user");
 
 dotenv.config();
 

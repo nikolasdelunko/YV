@@ -19,9 +19,10 @@ export default function Login() {
 
   const getInfo = async () => {
     const res = await axios.get("http://localhost:3009/users");
-    return setData(res.data[0]);
+    return setData(res.data);
   };
-  console.log(!!data);
+
+  const findUser = data?.find((i) => i.login === name);
 
   useEffect(() => {
     getInfo();
@@ -36,13 +37,13 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (data.login === name && data.password === password) {
+    if (findUser?.login === name && findUser?.password === password) {
       setLoginError(null);
       dispatch(setLogin(true));
       localStorage.setItem("user", true);
       navigate(fromPage, { replace: true });
     } else {
-      setLoginError("somsing Wrong");
+      setLoginError("Wrong data");
       dispatch(setLogin(false));
     }
   };
