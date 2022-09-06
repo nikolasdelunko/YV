@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const { authorization } = require("../../data/authorization");
+const verify = require("../../helpers/verfyToken");
 
 const { getCertificates, getCertificatesById } = require("./get.hendlers");
 const { patchCertificates } = require("./patch.hendlers");
@@ -12,9 +12,9 @@ const {
 
 router.get("/certificates", getCertificates);
 router.get("/certificates/:id", getCertificatesById);
-router.patch("/certificates/:id", patchCertificates);
-router.post("/certificates", postCertificates);
-router.delete("/certificates/:id", deleteCertificatesById);
-router.delete("/certificates", deleteCertificates);
+router.patch("/certificates/:id", verify, patchCertificates);
+router.post("/certificates", verify, postCertificates);
+router.delete("/certificates/:id", verify, deleteCertificatesById);
+router.delete("/certificates", verify, deleteCertificates);
 
 module.exports = router;

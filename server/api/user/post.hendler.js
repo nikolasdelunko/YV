@@ -27,16 +27,26 @@ exports.postUsers = async (req, res) => {
     password: hashPassword,
   });
   try {
+    user.save();
     res.send({ user: user._id });
   } catch (error) {
     res.status(400).send(error);
   }
 };
 
+exports.loginUser = async (req, res) => {
+  const { error } = loginValidation(req.body);
+  if (error) return res.status(400).send(error?.details[0].message);
 
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(400).send("email is  wrong");
 
+  const validPass = await bcrypt.compare(req.body.password, user.password);
+  if (!validPass) return res.status(400).send("password is wrong");
 
-
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_ACCESS_SECRET);
+	res.header("auth-token", token).send(token);
+};
 
 // ? OLD Code
 // exports.postUsers = async (req, res) => {
