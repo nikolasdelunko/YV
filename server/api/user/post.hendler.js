@@ -35,6 +35,7 @@ exports.postUsers = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
+	console.log(req.body)
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error?.details[0].message);
 
@@ -45,33 +46,5 @@ exports.loginUser = async (req, res) => {
   if (!validPass) return res.status(400).send("password is wrong");
 
   const token = jwt.sign({ _id: user._id }, process.env.JWT_ACCESS_SECRET);
-	res.header("auth-token", token).send(token);
+  res.header("auth-token", token).send(token);
 };
-
-// ? OLD Code
-// exports.postUsers = async (req, res) => {
-//   const users = await Users.find().exec();
-//   if (!users) {
-//     res.status(404).send(`contacts not found`).end();
-//   }
-//   const requiredKeys = ["login", "password"];
-//   const keys = Object.keys(req.body).filter((k) => requiredKeys.includes(k));
-//   if (keys.length !== requiredKeys.length) {
-//     res
-//       .status(400)
-//       .send(`keys ${requiredKeys.join(",")} are required!`)
-//       .end();
-//   } else {
-//     keys.forEach((k) => {
-//       if (req.body[k] === null || req.body === undefined) {
-//         res.status(400).send(`key ${k} is required`).end();
-//       }
-//     });
-//     const user = new Users(
-//       [...keys].reduce((acc, el) => ({ ...acc, [el]: req.body[el] }), {})
-//     );
-//     user._id = generateId(users);
-//     await user.save();
-//     res.send(`User is username ${user.login} created! id - ${user._id}`).end();
-//   }
-// }

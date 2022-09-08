@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useStyles } from "./Style";
-import { useDispatch } from "react-redux";
-import { setLogin } from "../../store/helpers/helpersSlice";
+// import { useDispatch } from "react-redux";
+// import { userOperations } from "../../store/user";
 import {
   Box,
   Button,
@@ -18,21 +18,18 @@ import Projects from "../../components/Form/Forms//Projects";
 import Education from "../../components/Form/Forms/Education";
 import WorkExp from "../../components/Form/Forms/WorkExp";
 import Certificates from "../../components/Form/Forms/Certificates";
+import useAuth from "../../utils/costumHooks/useAuth";
 
 export default function AdminPanel() {
+  const { logOut } = useAuth();
   const classes = useStyles();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const logOut = () => {
-    dispatch(setLogin(false));
-    localStorage.setItem("user", false);
-    localStorage.clear();
-  };
   return (
     <Box>
       <Typography

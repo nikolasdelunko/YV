@@ -1,3 +1,6 @@
-import reducer from './userSlice'
+import reducer from "./userSlice";
 
-export default reducer
+export { default as userSelectors } from "./selectors";
+export { default as userOperations } from "./operations";
+
+export default reducer;
