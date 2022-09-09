@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const { authorization } = require("../../data/authorization");
+const verify = require("../../helpers/verfyToken");
 
 const { getProjectById, getProjects } = require("./get.hendlers");
 const { postProject } = require("./post.hendlers");
@@ -9,9 +9,9 @@ const { deleteProject, deleteProjectById } = require("./delete.hendlers");
 
 router.get("/projects/:id", getProjectById);
 router.get("/projects", getProjects);
-router.post("/projects",  postProject);
-router.patch("/projects/:id",  updateProjectById);
-router.delete("/projects/:id",  deleteProjectById);
-router.delete("/projects",  deleteProject);
+router.post("/projects", verify, postProject);
+router.patch("/projects/:id", verify, updateProjectById);
+router.delete("/projects/:id", verify, deleteProjectById);
+router.delete("/projects", verify, deleteProject);
 
 module.exports = router;

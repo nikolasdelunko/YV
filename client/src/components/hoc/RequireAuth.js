@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 function RequireAuth({ children }) {
   const location = useLocation();
-  const auth = useSelector((state) => state.helpers.login);
-  // const auth = true
+  const auth = useSelector((state) => state.user.isLogin);
 
   if (!auth) {
     return <Navigate to="/login" state={{ from: location }} />;
@@ -13,6 +12,14 @@ function RequireAuth({ children }) {
   return children;
 }
 
-export { RequireAuth };
+function RequireLogin({ children }) {
+  const location = useLocation();
+  const login = useSelector((state) => state.user.isLogin);
 
+  if (login) {
+    return <Navigate to="/admin" state={{ from: location }} />;
+  }
+  return children;
+}
 
+export { RequireAuth, RequireLogin };

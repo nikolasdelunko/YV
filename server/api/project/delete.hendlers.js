@@ -15,7 +15,11 @@ exports.deleteProject = async (req, res) => {
     res.status(404).send(`project not found`).end();
   } else {
     const lastProject = projects.slice(-1);
-    await Project.findByIdAndDelete(lastProject[0]._id).exec();
-    res.send("Last project deleted").end();
+    await Project.findByIdAndDelete(
+      lastProject.length ? lastProject[0]._id : null
+    ).exec();
+    res
+      .send(lastProject.length ? "Last project deleted" : "no project found")
+      .end();
   }
 };

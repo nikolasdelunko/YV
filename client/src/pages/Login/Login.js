@@ -2,24 +2,36 @@ import React, { useState, useEffect } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import { useStyles } from "./Style";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setLogin } from "../../store/helpers/helpersSlice";
+import { userOperations } from "../../store/user";
+import Spinner from "../../components/Spinner/Spinner";
+import useAuth from "../../utils/costumHooks/useAuth";
 
 export default function Login() {
+  const { login } = useAuth();
   const classes = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const [name, setName] = useState(null);
+  const [email, setName] = useState(null);
   const [password, setPassword] = useState(null);
   const [loginError, setLoginError] = useState(null);
   const [data, setData] = useState();
 
+  const test = [
+    {
+      email: "test@email.com",
+      password: "Nastya123"
+    }
+  ];
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/user");
-    return setData(res.data[0]);
+    // const res = await axios.get("http://localhost:3009/users");
+    // return setData(res.data);
+    setData(test);
   };
+
+  const findUser = data?.find((i) => i.email === email);
 
   useEffect(() => {
     getInfo();
@@ -31,17 +43,21 @@ export default function Login() {
   const handleChangePass = (event) => {
     setPassword(event.target.value);
   };
-
-  const handleSubmit = (e) => {
+  const value = {
+    "email": email,
+    "password": password,
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (data.login === name && data.password === password) {
+    if (findUser?.email === email && findUser?.password === password) {
+      await login(value);
       setLoginError(null);
-      dispatch(setLogin(true));
+      dispatch(userOperations.setLogin(true));
       localStorage.setItem("user", true);
       navigate(fromPage, { replace: true });
     } else {
-      setLoginError("somsing Wrong");
-      dispatch(setLogin(false));
+      setLoginError("Wrong data");
+      dispatch(userOperations.setLogin(true));
     }
   };
 
@@ -51,9 +67,7 @@ export default function Login() {
     <form onSubmit={handleSubmit} className={classes.main}>
       <Box
         component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-        }}
+        className={classes.mainBox}
         noValidate
         autoComplete="off"
       >
@@ -61,7 +75,7 @@ export default function Login() {
         <TextField
           id="outlined-name"
           label="Name"
-          value={name}
+          value={email}
           required
           onChange={handleChange}
         />
@@ -74,9 +88,18 @@ export default function Login() {
           onChange={handleChangePass}
         />
       </Box>
-      <Button variant="outlined" className={classes.btn} type="submit">
-        LOGIN
-      </Button>
+      {!!data ? (
+        <Button
+          variant="outlined"
+          className={classes.btn}
+          type="submit"
+          disabled={!!data ? false : true}
+        >
+          LOGIN
+        </Button>
+      ) : (
+        <Spinner />
+      )}
     </form>
   );
 }
