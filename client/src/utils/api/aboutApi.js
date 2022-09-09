@@ -18,3 +18,6 @@ export const deleteAbout = () => {
   };
   return axios("http://localhost:3009/about", options);
 };
+
+
+export const getAbout = () => axios('http://localhost:3009/about')

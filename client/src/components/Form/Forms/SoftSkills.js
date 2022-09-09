@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useStyles } from "./Style";
 import { Button, Typography } from "@mui/material";
 import { snackActions } from "../../../utils/costumHooks/useSnack";
-import { postAbout, deleteAbout } from "../../../utils/api/aboutApi";
+import { postAbout, deleteAbout, getAbout } from "../../../utils/api/aboutApi";
 
 export default function SoftSkills() {
   const classes = useStyles();
@@ -25,6 +25,7 @@ export default function SoftSkills() {
       snackActions.warning(e.name);
     }
   };
+
 
   return (
     <Formik
