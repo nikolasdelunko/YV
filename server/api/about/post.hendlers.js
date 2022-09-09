@@ -11,7 +11,8 @@ exports.postAbout = async (req, res) => {
     req.body.skill.trim() === ""
   ) {
     res.send("please write 1 you soft skill").end();
-  } else {
+  } 
+	else {
     const newAbout = new About(req.body);
     await newAbout.save();
     res.send(` you succes added  skill: ${req.body.skill} `).end();

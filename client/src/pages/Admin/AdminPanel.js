@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useStyles } from "./Style";
-// import { useDispatch } from "react-redux";
-// import { userOperations } from "../../store/user";
 import {
   Box,
   Button,
@@ -23,7 +21,6 @@ import useAuth from "../../utils/costumHooks/useAuth";
 export default function AdminPanel() {
   const { logOut } = useAuth();
   const classes = useStyles();
-  // const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {

@@ -1,13 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserByToken } from "../../utils/api/userApi";
-// import {snackActions} from '../../utils/customHooks/useSnackBarUtils'
+import { snackActions } from "../../utils/costumHooks/useSnack";
 
 const initialState = {
-  token: JSON.parse(localStorage.getItem("userInfo")) || null,
   data: JSON.parse(localStorage.getItem("userInfo")) || null,
   error: null,
   isLoading: false,
-  isLogin: false,
+  isLogin: !!JSON.parse(localStorage.getItem("userInfo")) || false,
 };
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
@@ -26,15 +25,8 @@ const userSlice = createSlice({
       state.data = action.payload;
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
     },
-    setToken(state, action) {
-      const { token } = action.payload;
-      state.token = token;
-      localStorage.setItem("userToken", token);
-    },
     logOut(state) {
-      localStorage.removeItem("userToken");
       localStorage.removeItem("userInfo");
-      state.token = null;
       state.data = null;
       return state;
     },
@@ -51,10 +43,9 @@ const userSlice = createSlice({
       state.error = null;
     },
     [fetchUser.rejected]: (state) => {
-      // snackActions.error('Trouble with auth, relogin please')
-      localStorage.removeItem("userToken");
+      snackActions.error("Trouble with auth, relogin please");
+      localStorage.removeItem("userInfo");
       state.isLoading = false;
-      state.token = null;
       state.error = "Error happened while user data loading. Relogin plz";
     },
   },

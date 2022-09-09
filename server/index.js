@@ -30,14 +30,12 @@ app.use(skillsRouter);
 app.use(myTextRouter);
 app.use(certificatesRouter);
 app.use(contacts);
-app.use(users)
-
+app.use(users);
 
 const generateId = (data) => {
   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
   return data.find((u) => u.id === id) ? generateId(data) : id;
 };
-
 
 //! post need { "skill" : "here skill"} send
 
@@ -56,4 +54,3 @@ mongoose
       console.log(`app start on port ${process.env.APP_PORT}`);
     });
   });
-
