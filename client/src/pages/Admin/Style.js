@@ -1,6 +1,9 @@
 import { makeStyles } from '@mui/styles'
 
 export const useStyles = makeStyles(theme => ({
+	AccordionArrow : {
+		color: 'white'
+	},
     btn: {
         position: 'absolute',
         padding: '35px 0px',

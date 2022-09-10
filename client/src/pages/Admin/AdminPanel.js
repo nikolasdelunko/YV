@@ -42,7 +42,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel1")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
@@ -59,7 +59,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel2")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
@@ -76,7 +76,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel3")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
@@ -91,7 +91,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel4")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
@@ -106,7 +106,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel5")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel5bh-content"
           id="panel5bh-header"
         >
@@ -123,7 +123,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel6")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel6bh-content"
           id="panel6bh-header"
         >
@@ -138,7 +138,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel7")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel7bh-content"
           id="panel6bh-header"
         >
