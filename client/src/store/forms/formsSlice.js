@@ -26,7 +26,7 @@ const userSlice = createSlice({
     },
     addTouchText(state, action) {
       state.touchText = action.payload;
-    },
+    }
   },
 });
 

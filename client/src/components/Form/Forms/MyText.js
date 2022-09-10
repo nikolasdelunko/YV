@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { formsOperations } from "../../../store/forms";
 import Text from "./data/Text";
 
+
 export default function MyText() {
   const classes = useStyles();
   const data = useSelector((state) => state.forms.text);
@@ -23,7 +24,7 @@ export default function MyText() {
   const validationSchema = yup.object().shape({
     text: yup
       .string()
-      .min(3, "Enter  text longer 3 letters")
+      .min(25, "Enter  text longer 25 letters")
       .required("No text provided."),
   });
 

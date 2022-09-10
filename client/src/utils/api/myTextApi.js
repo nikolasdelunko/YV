@@ -17,7 +17,7 @@ export const patchMyText = (data, id) => {
   const options = {
     method: "patch",
     headers: { "auth-token": `${JSON.parse(token)}` },
-    data: data,
+    data: {"text" : data},
   };
   return axios(`http://localhost:3009/myText/${id}`, options);
 };
