@@ -1,17 +1,21 @@
 import React from "react";
 import { Box, Typography, Button, Grid } from "@mui/material";
 import { useStyles } from "./Style";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import {getMyText} from '../../utils/api/myTextApi'
+import { useDispatch, useSelector } from "react-redux";
+import { formsOperations } from "../../store/forms";
 
 export default function Main() {
   const classes = useStyles();
-  const [data, setData] = useState();
+	const dispatch = useDispatch();
+	const data = useSelector((state) => state.forms.text);
 
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/myText");
-    return setData(res.data);
+    const res =  await getMyText()
+    return dispatch(formsOperations.addText(res.data));;
   };
+
 
   useEffect(() => {
     getInfo();

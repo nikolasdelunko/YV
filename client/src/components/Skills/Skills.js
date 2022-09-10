@@ -1,22 +1,25 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {Box, Typography } from '@mui/material'
 import {useStyles} from "./Style"
 import useColors from '../../utils/costumHooks/useColors'
-import axios from 'axios'
+import { useDispatch, useSelector } from "react-redux";
+import { formsOperations } from "../../store/forms";
+import { getSkills } from "../../utils/api/hardSkillsApi";
 
 
 
 
 export default function Skills() {
-  const [data, setData] = useState()
   const classes = useStyles() 
   const { colorsHendler } = useColors()
+	const dispatch = useDispatch();
+	const data = useSelector((state) => state.forms.hardSkills);
 
 
   const getInfo = async() => {
-    const res =  await axios.get('http://localhost:3009/skills')
-    return setData(res.data)
+    const res = await getSkills();
+    return dispatch(formsOperations.addHardSkills(res.data));
 }
 
     useEffect(() => {

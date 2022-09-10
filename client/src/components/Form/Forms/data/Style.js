@@ -16,6 +16,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
+    whiteSpace: "break-spaces !important",
     fontSize: "12px",
     color: "white",
   },

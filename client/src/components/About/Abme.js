@@ -4,15 +4,19 @@ import { Box, Typography } from "@mui/material";
 import { useStyles } from "./Style";
 import useColors from "../../utils/costumHooks/useColors";
 import axios from "axios";
+import { getAbout } from "../../utils/api/aboutApi";
+import { useDispatch, useSelector } from "react-redux";
+import { formsOperations } from "../../store/forms";
 
 export default function About() {
-  const [data, setData] = useState();
   const { colorsHendler } = useColors();
+	const dispatch = useDispatch();
+  const data = useSelector((state) => state.forms.skills);
   const classes = useStyles();
 
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/about");
-    return setData(res.data);
+    const res =  await getAbout();
+    return dispatch(formsOperations.addSkills(res.data));
   };
 
   useEffect(() => {
