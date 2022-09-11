@@ -1,9 +1,22 @@
 import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
+  mainBoxHidden: {
+    margin: "6px 0px",
+    cursor: "pointer",
+    justifyContent: "space-between",
+    alignItems: "center",
+    border: "3px solid #ff0000",
+    padding: "10px",
+    display: "inline-block",
+    transitionDuration: "500ms",
+    "&:hover": {
+      padding: "15px",
+      border: "3px solid #ff0000",
+    },
+  },
   mainBoxText: {
     cursor: "pointer",
-    display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     border: "1px solid white",

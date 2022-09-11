@@ -1,12 +1,8 @@
 import React from "react";
-import { Typography, Box, TextField } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { useStyles } from "./Style";
 import ClearIcon from "@mui/icons-material/Clear";
-import {
-  getProjectsById,
-  deleteProjectsById,
-  patchProjects,
-} from "../../../../utils/api/projectsApi";
+import { deleteProjectsById } from "../../../../utils/api/projectsApi";
 import { snackActions } from "../../../../utils/costumHooks/useSnack";
 import { useDispatch, useSelector } from "react-redux";
 import { formsOperations } from "../../../../store/forms";
@@ -17,6 +13,9 @@ const Text = ({ data }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const touch = useSelector((state) => state.forms.touchProjects);
+  const cngPrg = useSelector((state) => state.forms.changeProject);
+  const project = useSelector((state) => state.forms.project);
+
   const [change, setChange] = React.useState(false);
 
   const del = async () => {
@@ -37,14 +36,19 @@ const Text = ({ data }) => {
   };
 
   return (
-    <Box className={classes.mainBoxText}>
+    <Box className={cngPrg === true && data?._id === project?._id ? classes.mainBoxHidden : classes.mainBoxText}>
       <Typography variant="h9" noWrap component="div" className={classes.text}>
         {data.name}
       </Typography>
       <Typography variant="h9" noWrap component="div" className={classes.text}>
         {data.description}
       </Typography>
-      <Typography variant="h9" noWrap component="div" className={classes.textLink}>
+      <Typography
+        variant="h9"
+        noWrap
+        component="div"
+        className={classes.textLink}
+      >
         {data.photo}
       </Typography>
       {change ? null : (
