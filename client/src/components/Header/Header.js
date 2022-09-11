@@ -2,20 +2,19 @@ import React from "react";
 import { Box, Typography, Button, Grid } from "@mui/material";
 import { useStyles } from "./Style";
 import { useEffect } from "react";
-import {getMyText} from '../../utils/api/myTextApi'
+import { getMyText } from "../../utils/api/myTextApi";
 import { useDispatch, useSelector } from "react-redux";
 import { formsOperations } from "../../store/forms";
 
 export default function Main() {
   const classes = useStyles();
-	const dispatch = useDispatch();
-	const data = useSelector((state) => state.forms.text);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.forms.text);
 
   const getInfo = async () => {
-    const res =  await getMyText()
-    return dispatch(formsOperations.addText(res.data));;
+    const res = await getMyText();
+    return dispatch(formsOperations.addText(res.data));
   };
-
 
   useEffect(() => {
     getInfo();
@@ -33,7 +32,7 @@ export default function Main() {
                 color="#C8CAD6"
                 className={classes.textEl}
               >
-                BEHOLD! THE ALMIGHTY DEVS
+                BEHOLD! THE ALMIGHTY DEV
               </Typography>
               <img
                 className={classes.photoMob}

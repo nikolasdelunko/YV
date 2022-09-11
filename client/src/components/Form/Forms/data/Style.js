@@ -20,6 +20,16 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "12px",
     color: "white",
   },
+  textLink: {
+    whiteSpace: "break-spaces !important",
+    fontSize: "10px",
+    color: "#2036FF !important",
+  },
+  TextDescriptions: {
+    whiteSpace: "break-spaces !important",
+    fontSize: "8px",
+    color: "white",
+  },
   btnDel: {
     cursor: "pointer",
     transitionDuration: "500ms",

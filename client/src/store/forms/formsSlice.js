@@ -6,6 +6,10 @@ const initialState = {
   hardSkills: null,
   text: null,
   touchText: false,
+  projects: null,
+  project: null,
+	changeProject: false,
+  touchProjects: false,
 };
 
 const userSlice = createSlice({
@@ -26,7 +30,19 @@ const userSlice = createSlice({
     },
     addTouchText(state, action) {
       state.touchText = action.payload;
-    }
+    },
+    addProjects(state, action) {
+      state.projects = action.payload;
+    },
+    addProject(state, action) {
+      state.project = action.payload;
+    },
+		setChangeProject(state, action) {
+      state.changeProject = action.payload;
+    },
+    addTouchProjects(state, action) {
+      state.touchProjects = action.payload;
+    },
   },
 });
 
