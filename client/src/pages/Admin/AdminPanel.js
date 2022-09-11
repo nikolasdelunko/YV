@@ -140,7 +140,7 @@ export default function AdminPanel() {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel7bh-content"
-          id="panel6bh-header"
+          id="panel7bh-header"
         >
           <Typography sx={{ width: "33%", flexShrink: 0 }}>
             certificates
@@ -148,6 +148,23 @@ export default function AdminPanel() {
         </AccordionSummary>
         <AccordionDetails>
           <Certificates />
+        </AccordionDetails>
+      </Accordion>
+			<Accordion
+        expanded={expanded === "panel8"}
+        onChange={handleChange("panel8")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
+          aria-controls="panel8bh-content"
+          id="panel8bh-header"
+        >
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+            users
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <p>TYT User panel</p>
         </AccordionDetails>
       </Accordion>
       <Button

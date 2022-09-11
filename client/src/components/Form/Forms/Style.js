@@ -26,4 +26,22 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+  boxProjects: {
+    gap: "5px",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  inputGroupActive: {
+    border: "3px solid #ff0000",
+    padding: "10px",
+		margin: "10px",
+    display: "flex",
+    flexDirection: "column",
+  },
+  inputGroup: {
+    display: "flex",
+    flexDirection: "column",
+  },
 }));

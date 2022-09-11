@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
 import CustomInput from "../../../components/Form/TextInput";
 import { useStyles } from "./Style";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 import * as yup from "yup";
 import { snackActions } from "../../../utils/costumHooks/useSnack";
 import { useDispatch, useSelector } from "react-redux";
@@ -74,7 +74,7 @@ export default function SoftSkills() {
           snackActions.warning(e.name);
         } finally {
           dispatch(formsOperations.addTouchProjects(!touch));
-					dispatch(formsOperations.setChangeProject(false));
+          dispatch(formsOperations.setChangeProject(false));
         }
       }}
       validationSchema={validationSchema}
@@ -90,133 +90,143 @@ export default function SoftSkills() {
         dirty,
       }) => (
         <Form className={classes.main}>
-          {data?.map((item) => (
-            <Project data={item} />
-          ))}
-          {touched.name && errors.name && (
-            <Typography
-              variant="h9"
-              noWrap
-              component="div"
-              sx={{
-                fontSize: "12px",
-                cursor: "pointer",
-                color: "red",
-              }}
-            >
-              {errors.name}
-            </Typography>
-          )}
-          <Field
-            component={CustomInput}
-            data-testid="name"
-            name="name"
-            type="text"
-            label="name"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.name}
-          />
-          {touched.description && errors.description && (
-            <Typography
-              variant="h9"
-              noWrap
-              component="div"
-              sx={{
-                fontSize: "12px",
-                cursor: "pointer",
-                color: "red",
-              }}
-            >
-              {errors.description}
-            </Typography>
-          )}
-          <Field
-            component={CustomInput}
-            data-testid="description"
-            name="description"
-            type="text"
-            label="description"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.description}
-          />
-          {touched.photo && errors.photo && (
-            <Typography
-              variant="h9"
-              noWrap
-              component="div"
-              sx={{
-                fontSize: "12px",
-                cursor: "pointer",
-                color: "red",
-              }}
-            >
-              {errors.photo}
-            </Typography>
-          )}
-          <Field
-            component={CustomInput}
-            data-testid="photo"
-            name="photo"
-            type="text"
-            label="photo-Link"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.photo}
-          />
-          {touched.link && errors.link && (
-            <Typography
-              variant="h9"
-              noWrap
-              component="div"
-              sx={{
-                fontSize: "12px",
-                cursor: "pointer",
-                color: "red",
-              }}
-            >
-              {errors.link}
-            </Typography>
-          )}
-          <Field
-            component={CustomInput}
-            data-testid="link"
-            name="link"
-            type="text"
-            label="link"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.link}
-          />
-          {changeProject ? (
-            <Button
-              variant="outlined"
-              className={classes.btn}
-              disabled={!isValid && !dirty}
-              onClick={handleSubmit}
-            >
-              patch my project
-            </Button>
-          ) : (
-            <Button
-              variant="outlined"
-              className={classes.btn}
-              disabled={!isValid && !dirty}
-              onClick={handleSubmit}
-            >
-              Add New Project
-            </Button>
-          )}
-          {!changeProject && (
-            <Button
-              variant="outlined"
-              className={classes.btn}
-              onClick={hendleDelete}
-            >
-              Delete last Project
-            </Button>
-          )}
+          <Box className={classes.boxProjects}>
+            {data?.map((item) => (
+              <Project data={item} />
+            ))}
+          </Box>
+          <Box
+            className={
+              changeProject === true
+                ? classes.inputGroupActive
+                : classes.inputGroup
+            }
+          >
+            {touched.name && errors.name && (
+              <Typography
+                variant="h9"
+                noWrap
+                component="div"
+                sx={{
+                  fontSize: "12px",
+                  cursor: "pointer",
+                  color: "red",
+                }}
+              >
+                {errors.name}
+              </Typography>
+            )}
+            <Field
+              component={CustomInput}
+              data-testid="name"
+              name="name"
+              type="text"
+              label="name"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+            />
+            {touched.description && errors.description && (
+              <Typography
+                variant="h9"
+                noWrap
+                component="div"
+                sx={{
+                  fontSize: "12px",
+                  cursor: "pointer",
+                  color: "red",
+                }}
+              >
+                {errors.description}
+              </Typography>
+            )}
+            <Field
+              component={CustomInput}
+              data-testid="description"
+              name="description"
+              type="text"
+              label="description"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.description}
+            />
+            {touched.photo && errors.photo && (
+              <Typography
+                variant="h9"
+                noWrap
+                component="div"
+                sx={{
+                  fontSize: "12px",
+                  cursor: "pointer",
+                  color: "red",
+                }}
+              >
+                {errors.photo}
+              </Typography>
+            )}
+            <Field
+              component={CustomInput}
+              data-testid="photo"
+              name="photo"
+              type="text"
+              label="photo-Link"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.photo}
+            />
+            {touched.link && errors.link && (
+              <Typography
+                variant="h9"
+                noWrap
+                component="div"
+                sx={{
+                  fontSize: "12px",
+                  cursor: "pointer",
+                  color: "red",
+                }}
+              >
+                {errors.link}
+              </Typography>
+            )}
+            <Field
+              component={CustomInput}
+              data-testid="link"
+              name="link"
+              type="text"
+              label="link"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.link}
+            />
+            {changeProject ? (
+              <Button
+                variant="outlined"
+                className={classes.btn}
+                disabled={!isValid && !dirty}
+                onClick={handleSubmit}
+              >
+                patch my project
+              </Button>
+            ) : (
+              <Button
+                variant="outlined"
+                className={classes.btn}
+                disabled={!isValid && !dirty}
+                onClick={handleSubmit}
+              >
+                Add New Project
+              </Button>
+            )}
+            {!changeProject && (
+              <Button
+                variant="outlined"
+                className={classes.btn}
+                onClick={hendleDelete}
+              >
+                Delete last Project
+              </Button>
+            )}
+          </Box>
         </Form>
       )}
     </Formik>
