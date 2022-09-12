@@ -150,7 +150,7 @@ export default function AdminPanel() {
           <Certificates />
         </AccordionDetails>
       </Accordion>
-			<Accordion
+      <Accordion
         expanded={expanded === "panel8"}
         onChange={handleChange("panel8")}
       >
@@ -159,9 +159,7 @@ export default function AdminPanel() {
           aria-controls="panel8bh-content"
           id="panel8bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
-            users
-          </Typography>
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>users</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <p>TYT User panel</p>
