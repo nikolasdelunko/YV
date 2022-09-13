@@ -17,6 +17,8 @@ import Education from "../../components/Form/Forms/Education";
 import WorkExp from "../../components/Form/Forms/WorkExp";
 import Certificates from "../../components/Form/Forms/Certificates";
 import useAuth from "../../utils/costumHooks/useAuth";
+import Contacts from '../../components/Form/Forms/Contacts'
+import Users from "../../components/Form/Forms/users"
 
 export default function AdminPanel() {
   const { logOut } = useAuth();
@@ -151,6 +153,21 @@ export default function AdminPanel() {
         </AccordionDetails>
       </Accordion>
       <Accordion
+        expanded={expanded === "panel9"}
+        onChange={handleChange("panel9")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
+          aria-controls="panel9bh-content"
+          id="panel9bh-header"
+        >
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>contacts</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Contacts />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
         expanded={expanded === "panel8"}
         onChange={handleChange("panel8")}
       >
@@ -162,7 +179,7 @@ export default function AdminPanel() {
           <Typography sx={{ width: "33%", flexShrink: 0 }}>users</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <p>TYT User panel</p>
+          <Users />
         </AccordionDetails>
       </Accordion>
       <Button
