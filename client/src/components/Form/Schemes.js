@@ -1,16 +1,16 @@
 import * as yup from "yup";
 
 // //default required field error
-// const isRequiredError = "This field is required";
-// const isNotTrimmedError = "This field must have no spaces before and after";
+export const isRequiredError = "This field is required";
+export const isNotTrimmedError = "This field must have no spaces before and after";
 // const isNotLowerCaseError = "This field must be written in lowercase";
 // const IS_REQUIRED = "This field is required";
 // const STR_REGEX = /^[a-zа-яё]+$/i;
 // const STR_REGEX_LATIN_ONLY = /[a-z]/;
 // const PHONE_REGEX = /\+38\([\d]{3}\)\s[\d]{3}-[\d]{2}-[\d]{2}/;
 // const NUMBERS = /^[0-9]+$/;
-// const phoneRegExp =
-//   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+export const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 export const DATE_REGEX =
   /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}.[-].[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;

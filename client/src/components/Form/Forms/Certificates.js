@@ -56,7 +56,7 @@ export default function SoftSkills() {
         title: "",
         link: "",
       }}
-      alidateOnBlur
+      validateOnBlur
       onSubmit={async (values) => {
         try {
           const a = await postCertificates(values);

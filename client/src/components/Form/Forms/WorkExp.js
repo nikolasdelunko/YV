@@ -67,7 +67,7 @@ export default function SoftSkills() {
         year: "",
         description: "",
       }}
-      alidateOnBlur
+      validateOnBlur
       onSubmit={async (values) => {
         try {
           const a = await postWorkExp(values);

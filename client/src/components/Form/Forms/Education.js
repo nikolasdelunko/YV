@@ -65,7 +65,7 @@ export default function SoftSkills() {
         year: "",
         link: "",
       }}
-      alidateOnBlur
+      validateOnBlur
       onSubmit={async (values) => {
         try {
           const a = await postEducation(values);

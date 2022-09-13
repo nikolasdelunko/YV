@@ -16,6 +16,10 @@ const initialState = {
   touchWorkExp: false,
   certificates: null,
   touchCertificates: false,
+  contacts: null,
+  contact: null,
+  touchContacts: false,
+  changeContacts: false,
 };
 
 const userSlice = createSlice({
@@ -66,6 +70,18 @@ const userSlice = createSlice({
     },
     setTouchCertificates(state, action) {
       state.touchCertificates = action.payload;
+    },
+    addContacts(state, action) {
+      state.contacts = action.payload;
+    },
+    addContact(state, action) {
+      state.contact = action.payload;
+    },
+    setTouchContacts(state, action) {
+      state.touchContacts = action.payload;
+    },
+    setChangeContacts(state, action) {
+      state.changeContacts = action.payload;
     },
   },
 });
