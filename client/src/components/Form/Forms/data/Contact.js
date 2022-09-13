@@ -28,7 +28,6 @@ const Contact = ({ data }) => {
   };
 
   const changeContact = () => {
-		console.log('adasd')
     dispatch(formsOperations.addContact(data));
     // dispatch(formsOperations.addContacts(data));
     dispatch(formsOperations.setChangeContacts(true));

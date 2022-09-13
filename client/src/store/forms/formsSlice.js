@@ -13,6 +13,8 @@ const initialState = {
   education: null,
   touchEducation: false,
   workExp: null,
+  workExpCurrent: null,
+  changeWorkExp: false,
   touchWorkExp: false,
   certificates: null,
   touchCertificates: false,
@@ -62,8 +64,14 @@ const userSlice = createSlice({
     addWorkExp(state, action) {
       state.workExp = action.payload;
     },
+		addWorkExpCurrent(state, action) {
+      state.workExpCurrent = action.payload;
+    },
     setTouchWorkExp(state, action) {
       state.touchWorkExp = action.payload;
+    },
+		setChangeWorkExp(state, action) {
+      state.changeWorkExp = action.payload;
     },
     addCertificates(state, action) {
       state.certificates = action.payload;

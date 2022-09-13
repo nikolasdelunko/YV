@@ -16,7 +16,6 @@ const Text = ({ data }) => {
   const cngPrg = useSelector((state) => state.forms.changeProject);
   const project = useSelector((state) => state.forms.project);
 
-  const [change, setChange] = React.useState(false);
 
   const del = async () => {
     try {
@@ -32,7 +31,6 @@ const Text = ({ data }) => {
   const changeText = () => {
     dispatch(formsOperations.addProject(data));
     dispatch(formsOperations.setChangeProject(true));
-    setChange(true);
   };
 
   return (
@@ -51,14 +49,13 @@ const Text = ({ data }) => {
       >
         {data.photo}
       </Typography>
-      {change ? null : (
+      {cngPrg ? null : (
         <EditIcon className={classes.btnDel} onClick={() => changeText()} />
       )}
-      {change ? (
+      {cngPrg ? (
         <CloseFullscreenIcon
           className={classes.btnDel}
           onClick={() => {
-            setChange(false);
             dispatch(formsOperations.setChangeProject(false));
           }}
         />

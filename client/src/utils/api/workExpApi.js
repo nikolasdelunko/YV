@@ -37,3 +37,12 @@ export const deleteWorkExp = (data) => {
   };
   return axios("http://localhost:3009/WorkExp", options);
 };
+
+export const patchWorkExp = (data, id) => {
+  const options = {
+    method: "patch",
+    headers: { "auth-token": `${JSON.parse(token)}` },
+    data: data,
+  };
+  return axios(`http://localhost:3009/WorkExp/${id}`, options);
+};
