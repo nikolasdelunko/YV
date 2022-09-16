@@ -28,7 +28,7 @@ exports.postUsers = async (req, res) => {
   });
   try {
     user.save();
-    res.send({ user: user._id });
+    res.send(`user with  name: ${user.name} created`);
   } catch (error) {
     res.status(400).send(error);
   }

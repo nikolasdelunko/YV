@@ -10,7 +10,7 @@ const verify = require("../../helpers/verfyToken");
 router.get("/users", verify, getUsers);
 router.get("/users/:id", verify, getUsersById);
 router.patch("/users/:id", verify, patchUsers);
-router.post("/users", postUsers);
+router.post("/users", verify, postUsers);
 router.post("/users/login", loginUser);
 router.delete("/users/:id", verify, deleteUsersById);
 router.delete("/users", verify, deleteUsers);

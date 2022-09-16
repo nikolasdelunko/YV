@@ -22,6 +22,10 @@ const initialState = {
   contact: null,
   touchContacts: false,
   changeContacts: false,
+  users: null,
+  touchUsers: false,
+  changeUser: false,
+  findUser: null,
 };
 
 const userSlice = createSlice({
@@ -64,13 +68,13 @@ const userSlice = createSlice({
     addWorkExp(state, action) {
       state.workExp = action.payload;
     },
-		addWorkExpCurrent(state, action) {
+    addWorkExpCurrent(state, action) {
       state.workExpCurrent = action.payload;
     },
     setTouchWorkExp(state, action) {
       state.touchWorkExp = action.payload;
     },
-		setChangeWorkExp(state, action) {
+    setChangeWorkExp(state, action) {
       state.changeWorkExp = action.payload;
     },
     addCertificates(state, action) {
@@ -90,6 +94,25 @@ const userSlice = createSlice({
     },
     setChangeContacts(state, action) {
       state.changeContacts = action.payload;
+    },
+    addUsers(state, action) {
+      const user = action.payload;
+      const item = user.map((i) => ({
+        _id: i._id,
+        email: i.email,
+        name: i.name,
+      }));
+      state.users = item;
+      state.users = state.users.slice(1, Infinity);
+    },
+    setTouchUsers(state, action) {
+      state.touchUsers = action.payload;
+    },
+    addFindUser(state, action) {
+      state.findUser = action.payload;
+    },
+    setChangeUser(state, action) {
+      state.changeUser = action.payload;
     },
   },
 });

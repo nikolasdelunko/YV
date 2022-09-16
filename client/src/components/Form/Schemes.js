@@ -2,61 +2,40 @@ import * as yup from "yup";
 
 // //default required field error
 export const isRequiredError = "This field is required";
-export const isNotTrimmedError = "This field must have no spaces before and after";
+export const isNotTrimmedError =
+  "This field must have no spaces before and after";
 // const isNotLowerCaseError = "This field must be written in lowercase";
 // const IS_REQUIRED = "This field is required";
-// const STR_REGEX = /^[a-zа-яё]+$/i;
+const STR_REGEX = /^[a-zа-яё]+$/i;
 // const STR_REGEX_LATIN_ONLY = /[a-z]/;
-// const PHONE_REGEX = /\+38\([\d]{3}\)\s[\d]{3}-[\d]{2}-[\d]{2}/;
-// const NUMBERS = /^[0-9]+$/;
-export const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+export const PHONE_REGEX =
+  /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+export const phoneRegExp = /\+38\([\d]{3}\)\s[\d]{3}-[\d]{2}-[\d]{2}/;
 
 export const DATE_REGEX =
   /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}.[-].[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
 
-// export const SING_UP_SCHEMA = yup.object().shape({
-//   firstName: yup
-//     .string()
-//     .strict(true)
-//     .trim(isNotTrimmedError)
-//     .min(3, "Must be longer than 3 characters")
-//     .max(20, "Nice try, nobody has a last name that long")
-//     .required(isRequiredError)
-//     .matches(STR_REGEX, "Invalid symbols, use only character"),
-//   lastName: yup
-//     .string()
-//     .strict(true)
-//     .trim(isNotTrimmedError)
-//     .min(3, "Must be longer than 3 characters")
-//     .max(20, "Nice try, nobody has a second name that long")
-//     .required(isRequiredError)
-//     .matches(STR_REGEX, "Invalid symbols, use only character"),
-//   login: yup
-//     .string()
-//     .strict(true)
-//     .lowercase(isNotLowerCaseError)
-//     .trim(isNotTrimmedError)
-//     .required(isRequiredError)
-//     .matches(STR_REGEX_LATIN_ONLY, "Invalid symbols, use only character"),
-//   email: yup
-//     .string()
-//     .strict(true)
-//     .trim(isNotTrimmedError)
-//     .required(isRequiredError)
-//     .email("Enter correct email"),
-//   password: yup
-//     .string()
-//     .required(isRequiredError)
-//     .min(7, "Password must be 7 digits minimum")
-//     .max(30, "Password must be 30 digits maximum"),
-//   confirmPass: yup
-//     .string()
-//     .required(isRequiredError)
-//     .oneOf([yup.ref("password")], "Passwords do not match"),
-//   subscribe: yup.bool(),
-//   rememberMe: yup.bool(),
-// });
+export const signUpShema = yup.object().shape({
+  firstName: yup
+    .string()
+    .strict(true)
+    .trim(isNotTrimmedError)
+    .min(3, "Must be longer than 3 characters")
+    .max(20, "Nice try, nobody has a last name that long")
+    .required(isRequiredError)
+    .matches(STR_REGEX, "Invalid symbols, use only character"),
+  email: yup
+    .string()
+    .strict(true)
+    .trim(isNotTrimmedError)
+    .required(isRequiredError)
+    .email("Enter correct email"),
+  password: yup
+    .string()
+    .required(isRequiredError)
+    .min(7, "Password must be 7 digits minimum")
+    .max(30, "Password must be 30 digits maximum")
+});
 
 // export const LOGIN_SCHEMA = yup.object().shape({
 //   loginOrEmail: yup

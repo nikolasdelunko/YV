@@ -13,7 +13,7 @@ import {
 import * as yup from "yup";
 import { formsOperations } from "../../../store/forms";
 import { snackActions } from "../../../utils/costumHooks/useSnack";
-import { isRequiredError, isNotTrimmedError, phoneRegExp } from "../Schemes";
+import { isRequiredError, isNotTrimmedError, PHONE_REGEX } from "../Schemes";
 import Contact from "./data/Contact";
 
 export default function Contacts() {
@@ -31,7 +31,7 @@ export default function Contacts() {
       .trim(isNotTrimmedError)
       .required(isRequiredError)
       .email("Enter correct email"),
-    phone: yup.string().matches(phoneRegExp, "Enter real  phone").required(),
+    phone: yup.string().matches(PHONE_REGEX, "Enter real  phone").required(),
   });
 
   const fetchContacts = async () => {
@@ -88,7 +88,7 @@ export default function Contacts() {
         <Form className={classes.main}>
           <Box className={classes.educationBox}>
             {data?.map((item) => (
-              <Contact data={item} />
+              <Contact data={item} key={item._id} />
             ))}
           </Box>
           <Box
@@ -155,15 +155,16 @@ export default function Contacts() {
               >
                 patch my Contact
               </Button>
-            ) :(<Button
-              variant="outlined"
-              className={classes.btn}
-              disabled={!isValid && !dirty}
-              onClick={handleSubmit}
-            >
-              Add New contact
-            </Button>
-						)}
+            ) : (
+              <Button
+                variant="outlined"
+                className={classes.btn}
+                disabled={!isValid && !dirty}
+                onClick={handleSubmit}
+              >
+                Add New contact
+              </Button>
+            )}
             {!changeContacts && (
               <Button
                 variant="outlined"
