@@ -73,7 +73,7 @@ const Text = ({ data }) => {
       {change ? (
         <CheckIcon
           className={classes.btnDel}
-          onClick={() => sendNewText(console.log(...value), data._id)}
+          onClick={() => sendNewText(data._id)}
         />
       ) : (
         <EditIcon className={classes.btnDel} onClick={() => changeText()} />

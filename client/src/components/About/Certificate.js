@@ -16,7 +16,6 @@ export default function Certificate() {
     useEffect(() => {
         getInfo()
     }, [])
-    console.log(data)
     
     return (
         <Box className={classes.father}>

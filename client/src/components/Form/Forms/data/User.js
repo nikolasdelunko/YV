@@ -32,6 +32,7 @@ const User = ({ data }) => {
     dispatch(formsOperations.setChangeUser(true));
   };
 
+
   return (
     <Box
       className={
@@ -45,6 +46,14 @@ const User = ({ data }) => {
       </Typography>
       <Typography variant="h9" noWrap component="div" className={classes.text}>
         name : {data.name}
+      </Typography>
+      <Typography
+        variant="h9"
+        noWrap
+        component="div"
+        className={classes.textLink}
+      >
+        Date created: {data.date.slice(0, 10)}
       </Typography>
       {changeUser ? null : (
         <EditIcon className={classes.btnDel} onClick={() => changeUserData()} />

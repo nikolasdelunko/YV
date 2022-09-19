@@ -11,6 +11,8 @@ const skillsRouter = require("./api/skills/index");
 const myTextRouter = require("./api/myText/index");
 const certificatesRouter = require("./api/certificates/index");
 const contacts = require("./api/contacts/index");
+const uploads = require("./api/uploads/index");
+const fileUpload = require("express-fileupload");
 
 dotenv.config();
 
@@ -22,6 +24,12 @@ app.use(cors());
 
 app.use(express.json());
 
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
+
 app.use(projectRouter);
 app.use(educationRouter);
 app.use(aboutRouter);
@@ -31,19 +39,13 @@ app.use(myTextRouter);
 app.use(certificatesRouter);
 app.use(contacts);
 app.use(users);
+app.use(uploads);
 
-const generateId = (data) => {
-  const id = Math.floor(Math.random() * (1000 - 1)) + 1;
-  return data.find((u) => u.id === id) ? generateId(data) : id;
-};
-
-//! post need { "skill" : "here skill"} send
-
-//! skills { "skill" : "here skill"} send
-
-//! myText     { "text" : "Here text"}
-
-//! contacts   { "email": "@gmail.com", "phone": "000 000 "}
+// ? рекурсия для создания id
+// const generateId = (data) => {
+//   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
+//   return data.find((u) => u.id === id) ? generateId(data) : id;
+// };
 
 mongoose
   .connect(connectionString, {

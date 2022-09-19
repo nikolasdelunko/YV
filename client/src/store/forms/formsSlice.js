@@ -101,6 +101,7 @@ const userSlice = createSlice({
         _id: i._id,
         email: i.email,
         name: i.name,
+				date: i.date,
       }));
       state.users = item;
       state.users = state.users.slice(1, Infinity);

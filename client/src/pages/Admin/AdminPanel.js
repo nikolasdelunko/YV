@@ -17,8 +17,9 @@ import Education from "../../components/Form/Forms/Education";
 import WorkExp from "../../components/Form/Forms/WorkExp";
 import Certificates from "../../components/Form/Forms/Certificates";
 import useAuth from "../../utils/costumHooks/useAuth";
-import Contacts from '../../components/Form/Forms/Contacts'
-import Users from "../../components/Form/Forms/Users"
+import Contacts from "../../components/Form/Forms/Contacts";
+import Users from "../../components/Form/Forms/Users";
+import Upload from "../../components/Form/Forms/Upload";
 
 export default function AdminPanel() {
   const { logOut } = useAuth();
@@ -180,6 +181,23 @@ export default function AdminPanel() {
         </AccordionSummary>
         <AccordionDetails>
           <Users />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel10"}
+        onChange={handleChange("panel10")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
+          aria-controls="panel10bh-content"
+          id="panel10bh-header"
+        >
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+            Upload files
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Upload />
         </AccordionDetails>
       </Accordion>
       <Button

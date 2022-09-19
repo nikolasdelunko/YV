@@ -26,6 +26,19 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+  mainUpload: {
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    border: "1px solid white",
+		padding: '10px',
+		maxWidth: "30%",
+  },
+	boxUpload: {
+		display: 'flex',
+    justifyContent: 'space-around',
+	},
   boxProjects: {
     gap: "5px",
     justifyContent: "center",
@@ -36,12 +49,26 @@ export const useStyles = makeStyles((theme) => ({
   inputGroupActive: {
     border: "3px solid #ff0000",
     padding: "10px",
-		margin: "10px",
+    margin: "10px",
     display: "flex",
     flexDirection: "column",
   },
   inputGroup: {
     display: "flex",
     flexDirection: "column",
+  },
+  btnUpload: {
+    opacity: 0,
+    height: 0,
+    width: 0,
+    lineHeight: 0,
+    overflow: "hidden",
+    padding: 0,
+    margin: 0,
+    // visability: "hidden",
+    // "&::before": {
+    // 	content: "Select photo to main",
+    // 	color: "black"
+    // }
   },
 }));
