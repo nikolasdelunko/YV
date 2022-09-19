@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button, Grid } from "@mui/material";
 import { useStyles } from "./Style";
 import { useEffect } from "react";
 import { getMyText } from "../../utils/api/myTextApi";
+import { getFile } from "../../utils/api/uploadApi";
 import { useDispatch, useSelector } from "react-redux";
 import { formsOperations } from "../../store/forms";
 
@@ -10,15 +11,26 @@ export default function Main() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.forms.text);
+  const [avatar, setAvatar] = useState(null);
 
   const getInfo = async () => {
     const res = await getMyText();
     return dispatch(formsOperations.addText(res.data));
   };
 
+  const getImage = async () => {
+    const res = await getFile();
+    return setAvatar(res.data[0].fileName);
+  };
+
+  useEffect(() => {
+    getImage();
+  }, []);
+
   useEffect(() => {
     getInfo();
   }, []);
+
 
   return (
     <Box className={classes.mainBox}>
@@ -34,11 +46,13 @@ export default function Main() {
               >
                 BEHOLD! THE ALMIGHTY DEV
               </Typography>
-              <img
-                className={classes.photoMob}
-                src={require("../../utils/photo/photoMain.jpg")}
-                alt={"photo"}
-              />
+              {avatar && (
+                <img
+                  className={classes.photoMob}
+                  src={require(`../../images/${avatar}`)}
+                  alt={`${avatar}`}
+                />
+              )}
             </Box>
             <Typography
               variant="body2"
@@ -56,11 +70,13 @@ export default function Main() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Box className={classes.photoBox}>
-              <img
-                className={classes.photo}
-                src={require("../../utils/photo/photoMain.jpg")}
-                alt={"photo"}
-              />
+              {avatar && (
+                <img
+                  className={classes.photo}
+                  src={require(`../../images/${avatar}`)}
+                  alt={`${avatar}`}
+                />
+              )}
             </Box>
           </Grid>
         </Grid>

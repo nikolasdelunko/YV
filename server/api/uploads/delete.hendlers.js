@@ -7,7 +7,7 @@ exports.deleteUpload = async (req, res) => {
   } else {
     await ImageModel.findByIdAndDelete(images.length > 1 ? images[0]._id : null).exec();
     res
-      .send(images.length > 1 ? "Last project deleted" : "no project found")
+      .send(images.length > 1 ? "Prev photo deleted" : "no photo found")
       .end();
   }
 };

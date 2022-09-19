@@ -1,6 +1,8 @@
 const ImageModel = require("../../models/file.model");
+var fs = require("fs");
 
 exports.postUpload = async (req, res) => {
+  const images = await ImageModel.find().exec();
   if (!req.files) return res.status(200).send(`no file uploaded`);
 
   const file = req.files.file;
@@ -9,8 +11,7 @@ exports.postUpload = async (req, res) => {
 
   const newFileName = encodeURI(file.name);
   const newType = file.data;
-
-  file.mv(`../../../client/src/images/${newFileName}`, (err) => {
+  file.mv(`../client/src/images/${newFileName}`, (err) => {
     if (err) {
       return res.status(500).send(err);
     } else {
@@ -20,6 +21,11 @@ exports.postUpload = async (req, res) => {
       });
       newImage.save();
       res.send("successfully uploaded");
+    }
+  });
+  fs.unlink(`../client/src/images/${images[0].fileName}`, function (err) {
+    if (err) {
+      return res.status(500).send(err);
     }
   });
 };
