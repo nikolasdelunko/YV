@@ -6,12 +6,13 @@ import { getMyText } from "../../utils/api/myTextApi";
 import { getFile } from "../../utils/api/uploadApi";
 import { useDispatch, useSelector } from "react-redux";
 import { formsOperations } from "../../store/forms";
+import Spinner from "../Spinner/Spinner";
 
 export default function Main() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.forms.text);
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState('');
 
   const getInfo = async () => {
     const res = await getMyText();
@@ -31,7 +32,6 @@ export default function Main() {
     getInfo();
   }, []);
 
-
   return (
     <Box className={classes.mainBox}>
       <Box className={classes.text}>
@@ -46,12 +46,14 @@ export default function Main() {
               >
                 BEHOLD! THE ALMIGHTY DEV
               </Typography>
-              {avatar && (
+              {avatar ? (
                 <img
                   className={classes.photoMob}
                   src={require(`../../images/${avatar}`)}
-                  alt={`${avatar}`}
+                  alt={`mobile-${avatar}`}
                 />
+              ) : (
+                <Spinner data={true} />
               )}
             </Box>
             <Typography
@@ -70,12 +72,14 @@ export default function Main() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Box className={classes.photoBox}>
-              {avatar && (
+              {avatar ? (
                 <img
                   className={classes.photo}
                   src={require(`../../images/${avatar}`)}
-                  alt={`${avatar}`}
+                  alt={`desktop${avatar}`}
                 />
+              ) : (
+                <Spinner data={true} />
               )}
             </Box>
           </Grid>

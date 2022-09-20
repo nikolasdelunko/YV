@@ -13,6 +13,7 @@ const certificatesRouter = require("./api/certificates/index");
 const contacts = require("./api/contacts/index");
 const uploads = require("./api/uploads/index");
 const fileUpload = require("express-fileupload");
+const cv = require("./api/cv/index")
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use(certificatesRouter);
 app.use(contacts);
 app.use(users);
 app.use(uploads);
+app.use(cv);
 
 // ? рекурсия для создания id
 // const generateId = (data) => {

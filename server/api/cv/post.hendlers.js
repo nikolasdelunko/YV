@@ -1,8 +1,8 @@
-const ImageModel = require("../../models/file.model");
+const CvModel = require("../../models/cv.model");
 var fs = require("fs");
 
-exports.postUpload = async (req, res) => {
-  const images = await ImageModel.find().exec();
+exports.postCv = async (req, res) => {
+  const cv = await CvModel.find().exec();
   if (!req.files) return res.status(200).send(`no file uploaded`);
 
   const file = req.files.file;
@@ -12,21 +12,21 @@ exports.postUpload = async (req, res) => {
   const newFileName = encodeURI(file.name);
   const newType = file.data;
 
-  file.mv(`../client/src/images/${newFileName}`, (err) => {
+  file.mv(`../client/src/files/${newFileName}`, (err) => {
     if (err) {
       return res.status(500).send(err);
     } else {
-      const newImage = new ImageModel({
+      const newCv = new CvModel({
         fileName: newFileName,
         filePath: newType,
       });
 			// await MyText.findOneAndUpdate(req.params.id, newImage).exec();
-      newImage.save();
+      newCv.save();
       res.send("successfully uploaded");
     }
   });
-  if (images.length) {
-    fs.unlink(`../client/src/images/${images[0].fileName}`, function (err) {
+  if (cv.length) {
+    fs.unlink(`../client/src/images/${cv[0].fileName}`, function (err) {
       if (err) {
         return res.status(500).send(err);
       }
