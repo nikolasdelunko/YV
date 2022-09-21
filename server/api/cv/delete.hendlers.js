@@ -3,9 +3,10 @@ const CvModel = require("../../models/cv.model");
 exports.deleteCv = async (req, res) => {
   const cv = await CvModel.find().exec();
   if (!cv) {
-    res.status(404).send(`cv not found`).end();
+    res.status(404).send(`soft skill not found`).end();
   } else {
-    await CvModel.findByIdAndDelete(cv.length > 1 ? cv[0]._id : null).exec();
-    res.send(cv.length > 1 ? "Prev cv deleted" : "no cv found").end();
+    const lastCv = cv[0];
+    await CvModel.findByIdAndDelete(cv.length ? lastCv._id : null).exec();
+    res.send(cv.length ? `last СV skill deleted` : `no CV`).end();
   }
 };

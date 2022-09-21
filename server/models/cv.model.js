@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
 const cvSchema = mongoose.Schema({
-  fileName: { type: String, required: true },
-  filePath: { data: Buffer, contentType: String },
+  _id: { type: Number },
+  link: { type: String, required: true },
+  date: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("cv", cvSchema);

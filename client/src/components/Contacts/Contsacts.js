@@ -4,20 +4,28 @@ import {useStyles} from "./Style"
 import useColors from '../../utils/costumHooks/useColors'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
+import {getCv } from "../../utils/api/cvApi"
 
 
 export default function Contsacts() {
     const { colorsHendler } = useColors()
     const classes = useStyles() 
     const [data, setData] = useState()
+		const [cv, setCv] = useState()
 
     const getInfo = async() => {
       const res =  await axios.get('http://localhost:3009/contacts')
       return setData(res.data[0])
   }
-  
+
+	const getCV = async() => {
+		const res = await getCv()
+		return setCv(res.data[0])
+}
+
       useEffect(() => {
        getInfo()
+			 getCV()
       }, [])
 
   return (
@@ -45,8 +53,8 @@ export default function Contsacts() {
             <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>telegram</Button>
             </a>
             </Grid>
-            <Grid item md={3} sm={12}>    
-            <a href={'https://drive.google.com/file/d/1hpWK3nrI9KZjoeHhwR1mDeEy7nbgXOlV/view?usp=sharing'} className={classes.link}>
+            <Grid item md={3} sm={12}>   
+						<a href={cv?.link} target='blanc' className={classes.link}> 
              <Button variant="text" className={classes.btn} sx={{ borderTop: `2px solid ${colorsHendler(10)}`}}>download cv</Button>
              </a>
             </Grid>

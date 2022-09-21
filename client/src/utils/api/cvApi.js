@@ -28,3 +28,12 @@ export const deleteCv = () => {
   };
   return axios(`http://localhost:3009/cv`, options);
 };
+
+export const patchCv = (data, id) => {
+  const options = {
+    method: "patch",
+    headers: { "auth-token": `${JSON.parse(token)}` },
+    data: data,
+  };
+  return axios(`http://localhost:3009/cv/${id}`, options);
+};
