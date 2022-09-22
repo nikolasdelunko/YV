@@ -25,7 +25,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   mobButton: {
-    left: "30%",
+    right: "40%",
     color: "#868686",
     bottom: "calc(20% + 10px)",
     cursor: "pointer",

@@ -24,6 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     ["@media (min-width: 768px)"]: {
       position: "absolute",
       visibility: "hidden",
+      display: "none",
     },
     objectFit: "cover",
   },
@@ -54,6 +55,11 @@ export const useStyles = makeStyles((theme) => ({
     width: "457px",
     height: "459px",
     objectFit: "cover",
+    ["@media (max-width: 768px)"]: {
+      position: "absolute",
+      visibility: "hidden",
+      display: "none",
+    },
   },
   btn: {
     padding: "35px 0px",
