@@ -17,6 +17,9 @@ import Education from "../../components/Form/Forms/Education";
 import WorkExp from "../../components/Form/Forms/WorkExp";
 import Certificates from "../../components/Form/Forms/Certificates";
 import useAuth from "../../utils/costumHooks/useAuth";
+import Contacts from "../../components/Form/Forms/Contacts";
+import Users from "../../components/Form/Forms/Users";
+import Upload from "../../components/Form/Forms/Upload";
 
 export default function AdminPanel() {
   const { logOut } = useAuth();
@@ -42,7 +45,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel1")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
@@ -59,7 +62,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel2")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
@@ -76,7 +79,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel3")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
@@ -91,7 +94,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel4")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
@@ -106,7 +109,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel5")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel5bh-content"
           id="panel5bh-header"
         >
@@ -123,7 +126,7 @@ export default function AdminPanel() {
         onChange={handleChange("panel6")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel6bh-content"
           id="panel6bh-header"
         >
@@ -138,9 +141,9 @@ export default function AdminPanel() {
         onChange={handleChange("panel7")}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
           aria-controls="panel7bh-content"
-          id="panel6bh-header"
+          id="panel7bh-header"
         >
           <Typography sx={{ width: "33%", flexShrink: 0 }}>
             certificates
@@ -148,6 +151,53 @@ export default function AdminPanel() {
         </AccordionSummary>
         <AccordionDetails>
           <Certificates />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel8"}
+        onChange={handleChange("panel8")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
+          aria-controls="panel8bh-content"
+          id="panel8bh-header"
+        >
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>contacts</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Contacts />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel9"}
+        onChange={handleChange("panel9")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
+          aria-controls="panel9bh-content"
+          id="panel9bh-header"
+        >
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>users</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Users />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel10"}
+        onChange={handleChange("panel10")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon className={classes.AccordionArrow} />}
+          aria-controls="panel10bh-content"
+          id="panel10bh-header"
+        >
+          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+            Upload files
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Upload />
         </AccordionDetails>
       </Accordion>
       <Button

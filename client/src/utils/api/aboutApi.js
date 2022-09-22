@@ -18,3 +18,13 @@ export const deleteAbout = () => {
   };
   return axios("http://localhost:3009/about", options);
 };
+
+export const deleteAboutById = (id) => {
+  const options = {
+    method: "delete",
+    headers: { "auth-token": `${JSON.parse(token)}` },
+  };
+  return axios(`http://localhost:3009/about/${id}`, options);
+};
+
+export const getAbout = () => axios("http://localhost:3009/about");

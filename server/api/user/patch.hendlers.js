@@ -5,11 +5,11 @@ exports.patchUsers = async (req, res) => {
   if (!user) {
     res.status(404).send("users not found").end();
   } else if (
-    req.body.login === undefined ||
-    req.body.login === null ||
-    req.body.login.trim() === ""
+    req.body.email === undefined ||
+    req.body.email === null ||
+    req.body.email.trim() === ""
   ) {
-    res.send("please write login").end();
+    res.send("please write email").end();
   } else if (
     req.body.password === undefined ||
     req.body.password === null ||

@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Field, Form, Formik } from "formik";
 import CustomInput from "../../../components/Form/TextInput";
 import * as yup from "yup";
 import { useStyles } from "./Style";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 import { snackActions } from "../../../utils/costumHooks/useSnack";
 import { postAbout, deleteAbout } from "../../../utils/api/aboutApi";
+import Skills from "./data/Skills";
+import { getAbout } from "../../../utils/api/aboutApi";
+import { useDispatch, useSelector } from "react-redux";
+import { formsOperations } from "../../../store/forms";
 
 export default function SoftSkills() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.forms.skills);
+  const touch = useSelector((state) => state.forms.touch);
+
+  const fetchSkill = async () => {
+    const res = await getAbout();
+    return dispatch(formsOperations.addSkills(res.data));
+  };
+
+  useEffect(() => {
+    fetchSkill();
+  }, [touch]);
 
   const validationSchema = yup.object().shape({
     skill: yup
@@ -23,6 +39,8 @@ export default function SoftSkills() {
       snackActions.warning(a.data);
     } catch (e) {
       snackActions.warning(e.name);
+    } finally {
+      dispatch(formsOperations.addTouch(!touch));
     }
   };
 
@@ -38,6 +56,8 @@ export default function SoftSkills() {
           snackActions.warning(a.data);
         } catch (e) {
           snackActions.warning(e.name);
+        } finally {
+          dispatch(formsOperations.addTouch(!touch));
         }
       }}
       validationSchema={validationSchema}
@@ -53,6 +73,11 @@ export default function SoftSkills() {
         dirty,
       }) => (
         <Form className={classes.main}>
+          <Box className={classes.boxSkills}>
+            {data?.map((item) => (
+              <Skills data={item} hard={false} key={item._id} />
+            ))}
+          </Box>
           {touched.skill && errors.skill && (
             <Typography
               variant="h9"

@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button, Grid } from "@mui/material";
 import { useStyles } from "./Style";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { getMyText } from "../../utils/api/myTextApi";
+import { getFile } from "../../utils/api/uploadApi";
+import { useDispatch, useSelector } from "react-redux";
+import { formsOperations } from "../../store/forms";
+import Spinner from "../Spinner/Spinner";
 
 export default function Main() {
   const classes = useStyles();
-  const [data, setData] = useState();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.forms.text);
+  const [avatar, setAvatar] = useState("");
+  const mobile = useSelector((state) => state.helpers.mobile);
 
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/myText");
-    return setData(res.data);
+    const res = await getMyText();
+    return dispatch(formsOperations.addText(res.data));
   };
+
+  const getImage = async () => {
+    const res = await getFile();
+    return setAvatar(res.data[0].fileName);
+  };
+
+  useEffect(() => {
+    getImage();
+  }, []);
 
   useEffect(() => {
     getInfo();
@@ -27,15 +43,19 @@ export default function Main() {
                 variant="h3"
                 component="h3"
                 color="#C8CAD6"
-                className={classes.textEl}
+                className={mobile ? classes.headText : classes.textEl}
               >
-                BEHOLD! THE ALMIGHTY DEVS
+                BEHOLD! THE ALMIGHTY DEV
               </Typography>
-              <img
-                className={classes.photoMob}
-                src={require("../../utils/photo/photoMain.jpg")}
-                alt={"photo"}
-              />
+              {avatar ? (
+                <img
+                  className={classes.photoMob}
+                  src={require(`../../images/${avatar}`)}
+                  alt={`mobile-${avatar}`}
+                />
+              ) : (
+                <Spinner data={true} />
+              )}
             </Box>
             <Typography
               variant="body2"
@@ -53,11 +73,15 @@ export default function Main() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Box className={classes.photoBox}>
-              <img
-                className={classes.photo}
-                src={require("../../utils/photo/photoMain.jpg")}
-                alt={"photo"}
-              />
+              {avatar ? (
+                <img
+                  className={classes.photo}
+                  src={require(`../../images/${avatar}`)}
+                  alt={`desktop${avatar}`}
+                />
+              ) : (
+                <Spinner data={true} />
+              )}
             </Box>
           </Grid>
         </Grid>

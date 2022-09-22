@@ -25,7 +25,7 @@ exports.deleteUsers = async (req, res) => {
       .send(
         users.length <= 1
           ? "no optional users found"
-          : `user  ${lastUser[0].login} deleted successfully`
+          : `user  ${lastUser[0].name} deleted successfully`
       )
       .end();
   }
