@@ -12,7 +12,8 @@ export default function Main() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.forms.text);
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState("");
+  const mobile = useSelector((state) => state.helpers.mobile);
 
   const getInfo = async () => {
     const res = await getMyText();
@@ -42,7 +43,7 @@ export default function Main() {
                 variant="h3"
                 component="h3"
                 color="#C8CAD6"
-                className={classes.textEl}
+                className={mobile ? classes.headText : classes.textEl}
               >
                 BEHOLD! THE ALMIGHTY DEV
               </Typography>
