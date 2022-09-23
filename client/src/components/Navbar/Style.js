@@ -6,13 +6,6 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     cursor: "pointer",
   },
-  logoMenu: {
-    order: "2",
-    marginLeft: "auto",
-    display: "flex",
-    flexDirection: "column",
-    cursor: "pointer",
-  },
   navbar: {
     margin: "45px 10% 0 10%",
     display: "flex",
