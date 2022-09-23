@@ -2,17 +2,26 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
   textHead: {
-		fontFmily: "Gilroy !important",
+    fontFamily: "Gilroy !important",
     display: "flex",
     fontStyle: "normal",
-    fontSize: "48px",
+    fontSize: "48px !important",
     textTransform: "uppercase",
     fontWeight: "700 !important",
     padding: "100px 0px 0px 10%",
     lineHeight: "110%",
     paddingTop: "15px",
     paddingBottom: "50px",
-		textAlign: 'left',
+    textAlign: "left",
+    ["@media (max-width:780px)"]: {
+      fontSize: "36px",
+    },
+  },
+  father: {
+    paddingTop: "200px",
+    ["@media (max-width:780px)"]: {
+      paddingTop: "70px",
+    },
   },
   box: {
     width: "50%",
@@ -30,21 +39,35 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxCard: {
     paddingTop: "200px",
+    ["@media (max-width:780px)"]: {
+      paddingTop: "70px",
+    },
   },
   conteinerCard: {
     paddingLeft: "10%",
     marginBottom: "30px",
-		["@media (max-width:780px)"]: {
-			width: "90%",
+    ["@media (max-width:780px)"]: {
+      width: "90%",
     },
   },
   text: {
-    padding: "15px 5px 0 5px",
-		fontFamily: 'Gilroy',
+    padding: "10px 5px 0 5px",
+		["@media (max-width:780px)"]: {
+      padding: "10px 1.5px 0 1.5px",
+    },
+  },
+  textSoft: {
+    padding: "10px 5px 0 5px",
+    fontFamily: "Gilroy",
     fontStyle: "normal",
     fontWeight: "500 !important",
-    fontSize: " 48px",
+    lineHeight: "133.7% !important",
+    fontSize: " 32px !important",
     display: "flex",
+    ["@media (max-width:780px)"]: {
+      padding: "20px 3px 0 3px",
+      fontSize: " 17px !important",
+    },
   },
   textBox: {
     display: "flex",
@@ -62,8 +85,8 @@ export const useStyles = makeStyles((theme) => ({
     top: "850px",
     background: "#1D1D1D",
     boxShadow: "0px 3px 3px 3px rg",
-		["@media (max-width:780px)"]: {
-			width: "97%",
+    ["@media (max-width:780px)"]: {
+      width: "97%",
     },
   },
   mainCardExp: {
@@ -73,8 +96,8 @@ export const useStyles = makeStyles((theme) => ({
     ["@media (max-height:820px)"]: {
       maxWidth: "485px",
     },
-		["@media (max-width:780px)"]: {
-			width: "97%",
+    ["@media (max-width:780px)"]: {
+      width: "97%",
     },
   },
   cardTextUp: {
@@ -91,14 +114,22 @@ export const useStyles = makeStyles((theme) => ({
   },
   cardTextDuwnExp: {
     display: "flex",
+    alignItems: "center",
     justifyContent: "space-between",
     margin: "8px 10% 32px",
+    ["@media (max-width:780px)"]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
   },
   cardItems: {
     display: "flex",
     flexWrap: "wrap",
   },
   textH: {
+    fontFamily: "Gilroy",
+    fontSize: "40px",
+    lineHeight: "110% !important",
     fontStyle: "normal",
     letterSpacing: "0.03em",
     textTransform: "uppercase",
@@ -112,13 +143,30 @@ export const useStyles = makeStyles((theme) => ({
   },
   textSpec: {
     color: "#787878",
+    fontFamily: "Gilroy",
+    fontStyle: "normal",
+    lineHeight: "135% !important",
     fontSize: "18px !important",
     fontWeight: "500 !important",
+    ["@media (max-width:780px)"]: {
+      lineHeight: "150% !important",
+    },
   },
   textYear: {
     color: "#FFFFFF",
+    fontFamily: "Gilroy",
+    fontStyle: "normal",
+    lineHeight: "150% !important",
     fontWeight: "400 !important",
     fontSize: "20px !important",
+  },
+  textYearWork: {
+    color: "#FFFFFF",
+    fontFamily: "Gilroy",
+    fontStyle: "normal",
+    lineHeight: "110% !important",
+    fontWeight: "400 !important",
+    fontSize: "12px !important",
   },
   textDescriptBox: {
     margin: "0 10%",
@@ -127,13 +175,23 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     maxWidth: "585px",
     color: "#CCCCD5",
+    paddingBottom: "45px",
+    fontFamily: "Gilroy",
+    fontStyle: "normal",
     fontWeight: "500 !important",
     fontSize: "18px !important",
-    paddingBottom: "45px",
+    lineHeight: "135% !important",
+    ["@media (max-width:780px)"]: {
+      fontWeight: "400 !important",
+      lineHeight: "150% !important",
+    },
   },
   photo: {
     width: "70%",
     height: "30%",
     objectFit: "cover",
+    ["@media (max-width:780px)"]: {
+      width: "97%",
+    },
   },
 }));

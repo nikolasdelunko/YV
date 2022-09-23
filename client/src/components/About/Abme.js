@@ -24,7 +24,7 @@ export default function About() {
   }, []);
 
   return (
-    <Box className={classes.father}>
+    <Box className={classes.fatherAbme}>
       <Typography
         variant="h4"
         component="h4"
@@ -42,7 +42,7 @@ export default function About() {
                 variant="h5"
                 component="h4"
                 color="#C8CAD6"
-                className={classes.text}
+                className={classes.textSoft}
               >
                 {item.skill}
               </Typography>

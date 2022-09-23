@@ -76,7 +76,7 @@ export default function Card({ education }) {
                 <Typography
                   variant="h5"
                   component="h4"
-                  className={classes.textYear}
+                  className={education? classes.textYear : classes.textYearWork}
                 >
                   {item.year}
                 </Typography>
