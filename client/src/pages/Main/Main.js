@@ -9,7 +9,6 @@ import Contacts from "../../components/Contacts/Contsacts";
 
 export default function Main() {
   const classes = useStyles();
-		//! in Header look style and repire horisontal skroll
   return (
     <Box className={classes.main}>
       <Header />

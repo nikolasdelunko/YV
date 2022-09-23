@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   textHead: {
-		fontFamily: "Gilroy",
+    fontFamily: "Gilroy",
     fontWeight: "700 !important",
     paddingTop: "15px",
     display: "flex",
@@ -17,10 +17,11 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   text: {
+    fontFamily: "Gilroy",
     fontStyle: "normal",
     fontWeight: "400 !important",
-    fontSize: " 48px",
     paddingTop: "15px",
+    lineHeight: "133.7% !important",
     display: "flex",
     textTransform: "uppercase",
   },
@@ -30,11 +31,17 @@ export const useStyles = makeStyles((theme) => ({
   btn: {
     padding: "15px 65px !important",
     boxShadow: " 0px 3px 3px 3px rgb(0 0 0 / 15%)",
+    fontFamily: "Gilroy !important",
+    fontWeight: "500 !important",
+    fontStyle: "normal",
+    lineHeight: "133.7% !important",
+    fontSize: "20px",
     "&:hover": {
       backgroundColor: "#FF2055 !important",
     },
     ["@media (max-width:780px)"]: {
       width: "255px",
+      margin: "36px 0px 0px 0px !important",
     },
   },
   btnBox: {

@@ -65,6 +65,11 @@ export const useStyles = makeStyles((theme) => ({
     padding: "35px 0px",
     color: "#2036FF !important",
     border: "1px solid #2036FF !important",
+    fontFamily: "Gilroy",
+    fontStyle: "normal",
+    fontWeight: "400 !important",
+    fontSize: "16px !important",
+    lineHeight: "133.7% !important",
     "&:hover": {
       color: "#FF2055 !important",
       border: "1px solid #FF2055 !important",
