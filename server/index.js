@@ -53,6 +53,7 @@ app.use(cv);
 //   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
 //   return data.find((u) => u.id === id) ? generateId(data) : id;
 // };
+// ! pricol
 
 app.use(express.static("client/build"));
 
