@@ -109,7 +109,6 @@ export default function Upload() {
           onSubmit={async (values) => {
             try {
               const a = await patchCv(values, id);
-              console.log(values, id);
               snackActions.warning(a.data);
             } catch (e) {
               snackActions.warning(e.name);

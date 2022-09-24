@@ -13,7 +13,7 @@ const certificatesRouter = require("./api/certificates/index");
 const contacts = require("./api/contacts/index");
 const uploads = require("./api/uploads/index");
 const fileUpload = require("express-fileupload");
-const cv = require("./api/cv/index")
+const cv = require("./api/cv/index");
 
 dotenv.config();
 
