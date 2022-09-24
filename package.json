@@ -1,11 +1,12 @@
 {
-  "name": "Yaroslav Verbytski",
+  "name": "yaroslav",
   "version": "1.0.0",
   "description": "Cv project",
   "main": "index.js",
 	"scripts": {
-    "start": "npm-run-all -p start:client start:server",
-    "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client && rm -rf server/public && cp -a client/build/. server/public/  &&  cp -a server/public/",
+		"start": "npm start --prefix server",
+    "start-dev": "npm-run-all -p start:client start:server",
+    "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client && rm -rf server/public && cp -a client/build/. server/public/",
     "start:client": "npm start --prefix client",
     "lint:client": "npm run lint --fix --prefix client",
     "start:server": "npm start --prefix server",
