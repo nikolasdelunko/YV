@@ -56,7 +56,7 @@ export default function Contsacts() {
         </Typography>
       </Box>
       <Box>
-        <Stack spacing={2} direction="row" className={classes.btnBox}>
+        <Stack  spacing={2} direction="row" className={classes.btnBox}>
           <Grid
             container
             rowSpacing={1}

@@ -8,6 +8,7 @@ import Theme from "./utils/Theme";
 import store from "./store/index";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { SnackbarProvider } from "notistack";
 import { SnackbarUtilsConfigurator } from "./utils/costumHooks/useSnack";
 
@@ -17,10 +18,12 @@ root.render(
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
-          <SnackbarProvider>
-            <SnackbarUtilsConfigurator />
-            <App />
-          </SnackbarProvider>
+          <HelmetProvider>
+            <SnackbarProvider>
+              <SnackbarUtilsConfigurator />
+              <App />
+            </SnackbarProvider>
+          </HelmetProvider>
         </BrowserRouter>
       </Provider>
     </React.StrictMode>

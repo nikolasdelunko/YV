@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Modal from "./components/Modal/Modal";
 import { useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { addMobile } from "./store/helpers/helpersSlice";
 
-
 function App() {
   const burger = useSelector((state) => state.helpers.burger);
 
@@ -17,19 +16,21 @@ function App() {
 
   const mobileControl = useMediaQuery("(max-width:768px)");
   const desktopControl = useMediaQuery("(min-width:730px)");
-  if (mobileControl === false) {
-    dispatch(addMobile(false));
-  } else if (desktopControl === false) {
-    dispatch(addMobile(true));
-  }
-
+	
+  useEffect(() => {
+    if (mobileControl === false) {
+      dispatch(addMobile(false));
+    } else if (desktopControl === false) {
+      dispatch(addMobile(true));
+    }
+  }, []);
 
   return (
     <div className="App">
       <Navbar />
       {/* {burger ? <Modal /> : <AppRoutes />} */}
-			<AppRoutes />
-			{burger && <Modal />} 
+      <AppRoutes />
+      {burger && <Modal />}
       <ScrollButton />
     </div>
   );

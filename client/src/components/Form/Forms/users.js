@@ -79,7 +79,7 @@ export default function Users() {
           dispatch(formsOperations.setChangeUser(false));
         }
       }}
-			validationSchema={validationSchema}
+      validationSchema={validationSchema}
     >
       {({
         values,
@@ -94,7 +94,7 @@ export default function Users() {
         <Form className={classes.main}>
           <Box className={classes.educationBox}>
             {data?.map((item) => (
-              <User data={item} />
+              <User data={item} key={item._id} />
             ))}
           </Box>
           <Box

@@ -28,6 +28,7 @@ export default function Certificate() {
                  srcSet={`${item.link}`}
                  alt={item.title}
                  loading="lazy"
+								 key={item._id}
       />)}
         </Box>
     )

@@ -31,7 +31,7 @@ export default function Skills() {
     <Box className={classes.main} id={'skills'}>
     <Typography variant="h4" component="h4" color="#C8CAD6" className={classes.textHead}>knowlrdge and skills</Typography>
       <Box className={classes.textBlock}>
-       {data?.map((item)=> <Typography variant="h5" component="h5" color="#C8CAD6" sx={{ color: `${colorsHendler(10)}`}} className={classes.textSkl}>{item.skill}</Typography>)}
+       {data?.map((item)=> <Typography variant="h5" component="h5" color="#C8CAD6" sx={{ color: `${colorsHendler(10)}`}} className={classes.textSkl} key={item._id}>{item.skill}</Typography>)}
       </Box>
     </Box>
   )

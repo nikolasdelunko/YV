@@ -35,7 +35,7 @@ export default function Card({ education }) {
       </Typography>
       <Box className={classes.cardItems}>
         {data?.map((item) => (
-          <Box className={classes.conteinerCard}>
+          <Box className={classes.conteinerCard} key={item._id}>
             <Paper
               elevation={3}
               className={education ? classes.mainCard : classes.mainCardExp}

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { useStyles } from "./Style";
 import useColors from "../../utils/costumHooks/useColors";
-import axios from "axios";
 import { getAbout } from "../../utils/api/aboutApi";
 import { useDispatch, useSelector } from "react-redux";
 import { formsOperations } from "../../store/forms";
@@ -37,7 +36,7 @@ export default function About() {
       <Box className={classes.textBlock}>
         <Box className={classes.box}>
           {data?.map((item) => (
-            <Box className={classes.textBox}>
+            <Box className={classes.textBox} key={item._id}>
               <Typography
                 variant="h5"
                 component="h4"
