@@ -77,7 +77,7 @@ export default function MyText() {
         <Form className={classes.main}>
           <Box className={classes.boxSkills}>
             {data?.map((item) => (
-              <Text data={item} />
+              <Text data={item} key={item._id} />
             ))}
           </Box>
           {touched.text && errors.text && (

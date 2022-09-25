@@ -75,7 +75,7 @@ export default function SoftSkills() {
         <Form className={classes.main}>
           <Box className={classes.boxSkills}>
             {data?.map((item) => (
-              <Skills data={item}  hard={true}/>
+              <Skills data={item}  hard={true} key={item._id}/>
             ))}
           </Box>
           {touched.skill && errors.skill && (

@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme) => ({
     ["@media (max-width:780px)"]: {
       textAlign: "left",
       width: "80%",
+      fontSize: "36px",
     },
   },
   boxText: {
@@ -25,6 +26,16 @@ export const useStyles = makeStyles((theme) => ({
     padding: "25px 32px",
     fontSize: "20px",
     color: "#20FF94",
+    fontFamily: "Gilroy",
+    fontStyle: "normal",
+    fontWeight: "500 !important",
+    fontSize: "20px !important",
+    lineHeight: "121.2% !important",
+    ["@media (max-width:780px)"]: {
+			fontSize: '12px',
+			lineHeight: '133.7%',
+    },
+
   },
   textBlock: {
     marginTop: "76px",

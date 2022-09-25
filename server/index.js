@@ -13,7 +13,8 @@ const certificatesRouter = require("./api/certificates/index");
 const contacts = require("./api/contacts/index");
 const uploads = require("./api/uploads/index");
 const fileUpload = require("express-fileupload");
-const cv = require("./api/cv/index")
+const cv = require("./api/cv/index");
+const path = require("path");
 
 dotenv.config();
 
@@ -24,6 +25,10 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+app.use(express.static("static"));
+
+// app.use(express.static(__dirname + "/public"));
 
 app.use(
   fileUpload({
@@ -48,6 +53,13 @@ app.use(cv);
 //   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
 //   return data.find((u) => u.id === id) ? generateId(data) : id;
 // };
+// ! pricol
+
+app.use(express.static("client/build"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/public/index.html"));
+});
 
 mongoose
   .connect(connectionString, {

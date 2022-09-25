@@ -99,7 +99,7 @@ export default function SoftSkills() {
         <Form className={classes.main}>
           <Box className={classes.educationBox}>
             {data?.map((item) => (
-              <Work data={item} />
+              <Work data={item} key={item._id} />
             ))}
           </Box>
           <Box

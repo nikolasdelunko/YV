@@ -9,7 +9,7 @@ export default function Spinner({ data }) {
         color: "#fff",
         zIndex: (theme) => theme.zIndex.drawer + 1,
         ["@media (max-width:780px)"]: {
-          transform: " translate(-15%, 0%)",
+          transform: " translate(0%, 0%)",
           backgroundColor: "rgb(0 0 0 / 0%)",
         },
       }}

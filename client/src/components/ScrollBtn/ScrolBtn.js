@@ -8,10 +8,13 @@ const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
   const classes = useStyles();
   const mobile = useSelector((state) => state.helpers.mobile);
+  const burger = useSelector((state) => state.helpers.burger);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
+		if (burger === true) {
+      setVisible(false);
+    }else if (scrolled > 300) {
       setVisible(true);
     } else if (scrolled <= 300) {
       setVisible(false);
@@ -33,9 +36,7 @@ const ScrollButton = () => {
       onClick={scrollToTop}
       style={{ display: visible ? "inline" : "none" }}
     >
-      <ArrowUpwardIcon
-        fontSize={"large"}
-      />
+      <ArrowUpwardIcon fontSize={"large"} />
       <Typography
         variant="h5"
         component="h4"

@@ -51,15 +51,28 @@ export default function Projects(data) {
           >
             {data.data.description}
           </Typography>
-          <a href={data.data.link} className={classes.link}>
-            <Button
-              variant="outlined"
-              className={btnOn ? classes.btn : classes.btnHover}
-            >
-              view project
-            </Button>
+          <a href={data.data.link} target="blanc" className={classes.link}>
+            {mobile ? (
+              <Button
+                variant="outlined"
+                className={classes.btn}
+              >
+                view project
+              </Button>
+            ) : (
+              <Button
+                variant="outlined"
+                className={btnOn ? classes.btn : classes.btnHover}
+              >
+                view project
+              </Button>
+            )}
           </a>
-          <img className={classes.photo} src={data.data.photo} alt={data.data.name} />
+          <img
+            className={classes.photo}
+            src={data.data.photo}
+            alt={data.data.name}
+          />
         </Paper>
       </Box>
     </Box>

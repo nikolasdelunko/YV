@@ -82,7 +82,7 @@ export default function SoftSkills() {
         <Form className={classes.main}>
           <Box className={classes.educationBox}>
             {data?.map((item) => (
-              <Certificate data={item} />
+              <Certificate data={item} key={item._id} />
             ))}
           </Box>
           {touched.title && errors.title && (
