@@ -18,6 +18,7 @@ export default function About() {
     return dispatch(formsOperations.addSkills(res.data));
   };
 
+
   useEffect(() => {
     getInfo();
   }, []);

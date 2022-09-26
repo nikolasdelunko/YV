@@ -13,7 +13,7 @@ export const PHONE_REGEX =
 export const phoneRegExp = /\+38\([\d]{3}\)\s[\d]{3}-[\d]{2}-[\d]{2}/;
 
 export const DATE_REGEX =
-  /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}.[-].[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
+  /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{4}.[-].[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
 
 export const signUpShema = yup.object().shape({
   firstName: yup
@@ -34,7 +34,7 @@ export const signUpShema = yup.object().shape({
     .string()
     .required(isRequiredError)
     .min(7, "Password must be 7 digits minimum")
-    .max(30, "Password must be 30 digits maximum")
+    .max(30, "Password must be 30 digits maximum"),
 });
 
 // export const LOGIN_SCHEMA = yup.object().shape({

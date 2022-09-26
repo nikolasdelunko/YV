@@ -8,7 +8,7 @@ export const postAbout = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/about", options);
+  return axios("/soft", options);
 };
 
 export const deleteAbout = () => {
@@ -16,7 +16,7 @@ export const deleteAbout = () => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios("http://localhost:3009/about", options);
+  return axios("/soft", options);
 };
 
 export const deleteAboutById = (id) => {
@@ -24,7 +24,7 @@ export const deleteAboutById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/about/${id}`, options);
+  return axios(`/soft/${id}`, options);
 };
 
-export const getAbout = () => axios("http://localhost:3009/about");
+export const getAbout = () => axios("/soft");

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const token = localStorage.getItem("userInfo");
 
-export const getMyText = () => axios.get("http://localhost:3009/myText");
+export const getMyText = () => axios.get("/myText");
 
 export const postMyText = (data) => {
   const options = {
@@ -10,16 +10,16 @@ export const postMyText = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/myText", options);
+  return axios("/myText", options);
 };
 
 export const patchMyText = (data, id) => {
   const options = {
     method: "patch",
     headers: { "auth-token": `${JSON.parse(token)}` },
-    data: {"text" : data},
+    data: { text: data },
   };
-  return axios(`http://localhost:3009/myText/${id}`, options);
+  return axios(`/myText/${id}`, options);
 };
 
 export const deleteMyTextById = (id) => {
@@ -27,7 +27,7 @@ export const deleteMyTextById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/myText/${id}`, options);
+  return axios(`/myText/${id}`, options);
 };
 
 export const deleteMyText = (data) => {
@@ -36,5 +36,5 @@ export const deleteMyText = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/myText", options);
+  return axios("/myText", options);
 };

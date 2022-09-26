@@ -23,7 +23,7 @@ function App() {
     } else if (desktopControl === false) {
       dispatch(addMobile(true));
     }
-  }, []);
+  }, [desktopControl]);
 
   return (
     <div className="App">

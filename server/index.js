@@ -15,6 +15,7 @@ const uploads = require("./api/uploads/index");
 const fileUpload = require("express-fileupload");
 const cv = require("./api/cv/index");
 const path = require("path");
+const port = process.env.PORT || 3009;
 
 dotenv.config();
 
@@ -28,7 +29,12 @@ app.use(express.json());
 
 app.use(express.static("static"));
 
-// app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 
 app.use(
   fileUpload({
@@ -48,25 +54,18 @@ app.use(users);
 app.use(uploads);
 app.use(cv);
 
-// ? рекурсия для создания id
-// const generateId = (data) => {
-//   const id = Math.floor(Math.random() * (1000 - 1)) + 1;
-//   return data.find((u) => u.id === id) ? generateId(data) : id;
-// };
-// ! pricol
 
-app.use(express.static("client/build"));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/public/index.html"));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
 
 mongoose
   .connect(connectionString, {
     useNewUrlParser: true,
   })
   .then(async () => {
-    app.listen(process.env.APP_PORT, () => {
-      console.log(`app start on port ${process.env.APP_PORT}`);
+    app.listen(port, () => {
+      console.log(`app start on port ${port}`);
     });
   });

@@ -11,11 +11,7 @@ export default function Card({ education }) {
   const { colorsHendler } = useColors();
 
   const getInfo = async () => {
-    const res = await axios.get(
-      education
-        ? "http://localhost:3009/education"
-        : "http://localhost:3009/workExp"
-    );
+    const res = await axios.get(education ? "/education" : "/workExp");
     return setData(res.data);
   };
 
@@ -35,7 +31,7 @@ export default function Card({ education }) {
       </Typography>
       <Box className={classes.cardItems}>
         {data?.map((item) => (
-          <Box className={classes.conteinerCard} key={item._id}>
+          <Box className={classes.conteinerCard}>
             <Paper
               elevation={3}
               className={education ? classes.mainCard : classes.mainCardExp}
@@ -76,7 +72,9 @@ export default function Card({ education }) {
                 <Typography
                   variant="h5"
                   component="h4"
-                  className={education? classes.textYear : classes.textYearWork}
+                  className={
+                    education ? classes.textYear : classes.textYearWork
+                  }
                 >
                   {item.year}
                 </Typography>

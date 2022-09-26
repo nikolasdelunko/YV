@@ -2,14 +2,14 @@ import axios from "axios";
 
 const token = localStorage.getItem("userInfo");
 
-export const getCertificates = () => axios.get("http://localhost:3009/certificates");
+export const getCertificates = () => axios.get("/certificates");
 
 export const getCertificatesById = (id) => {
   const options = {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/certificates/${id}`, options);
+  return axios(`/certificates/${id}`, options);
 };
 
 export const postCertificates = (data) => {
@@ -18,7 +18,7 @@ export const postCertificates = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/certificates", options);
+  return axios("/certificates", options);
 };
 
 export const patchCertificates = (data, id) => {
@@ -27,7 +27,7 @@ export const patchCertificates = (data, id) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios(`http://localhost:3009/certificates/${id}`, options);
+  return axios(`/certificates/${id}`, options);
 };
 
 export const deleteCertificatesById = (id) => {
@@ -35,7 +35,7 @@ export const deleteCertificatesById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/certificates/${id}`, options);
+  return axios(`/certificates/${id}`, options);
 };
 
 export const deleteCertificates = (data) => {
@@ -44,5 +44,5 @@ export const deleteCertificates = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/certificates", options);
+  return axios("/certificates", options);
 };

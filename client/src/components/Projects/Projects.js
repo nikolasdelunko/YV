@@ -14,9 +14,8 @@ export default function Projects() {
   const classes = useStyles();
   const mobile = useSelector((state) => state.helpers.mobile);
 
-
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/projects");
+    const res = await axios.get("/projects");
     return setData(res.data);
   };
 
@@ -50,7 +49,7 @@ export default function Projects() {
               .map((item) => <Cards data={item} key={item._id} />)
           : data?.map((item) => <Cards data={item} key={item._id} />)}
       </Box>
-      <Box sx={{display: "flex"}}>
+      <Box sx={{ display: "flex" }}>
         {project != Infinity && mobile && (
           <Button
             variant="outlined"
