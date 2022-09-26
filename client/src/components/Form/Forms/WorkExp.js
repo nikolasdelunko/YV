@@ -12,7 +12,7 @@ import {
 } from "../../../utils/api/workExpApi";
 import * as yup from "yup";
 import { formsOperations } from "../../../store/forms";
-import { DATE_REGEX } from "../Schemes";
+// import { DATE_REGEX } from "../Schemes";
 import { snackActions } from "../../../utils/costumHooks/useSnack";
 import Work from "./data/Work";
 
@@ -35,7 +35,7 @@ export default function SoftSkills() {
       .required(),
     year: yup
       .string()
-      .matches(DATE_REGEX, "Enter real  data format: DD/MM/YYYY - DD/MM/YYYY")
+      // .matches(DATE_REGEX, "Enter real  data format: DD/MM/YYYY - DD/MM/YYYY")
       .min(10, "Enter real data format: DD/MM/YYYY")
       .required(),
     description: yup

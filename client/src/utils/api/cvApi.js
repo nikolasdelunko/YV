@@ -10,7 +10,7 @@ export const uploadCv = (data) => {
     },
     data: data,
   };
-  return axios(`http://localhost:3009/cv`, options);
+  return axios(`/cv`, options);
 };
 
 export const getCv = () => {
@@ -18,7 +18,7 @@ export const getCv = () => {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/cv`, options);
+  return axios(`/cv`, options);
 };
 
 export const deleteCv = () => {
@@ -26,7 +26,7 @@ export const deleteCv = () => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/cv`, options);
+  return axios(`/cv`, options);
 };
 
 export const patchCv = (data, id) => {
@@ -35,5 +35,5 @@ export const patchCv = (data, id) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios(`http://localhost:3009/cv/${id}`, options);
+  return axios(`/cv/${id}`, options);
 };

@@ -6,9 +6,9 @@ const { getAbout } = require("./get.hendlers");
 const { postAbout } = require("./post.hendlers");
 const { deleteAbout, deleteAboutById } = require("./delete.hendlers");
 
-router.get("/about", getAbout);
-router.post("/about", verify, postAbout);
-router.delete("/about", verify, deleteAbout);
-router.delete("/about/:id", verify, deleteAboutById);
+router.get("/soft", getAbout);
+router.post("/soft", verify, postAbout);
+router.delete("/soft", verify, deleteAbout);
+router.delete("/soft/:id", verify, deleteAboutById);
 
 module.exports = router;

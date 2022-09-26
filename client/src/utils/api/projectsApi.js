@@ -2,14 +2,14 @@ import axios from "axios";
 
 const token = localStorage.getItem("userInfo");
 
-export const getProjects = () => axios.get("http://localhost:3009/projects");
+export const getProjects = () => axios.get("/projects");
 
 export const getProjectsById = (id) => {
   const options = {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/projects/${id}`, options);
+  return axios(`/projects/${id}`, options);
 };
 
 export const postProjects = (data) => {
@@ -18,7 +18,7 @@ export const postProjects = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/projects", options);
+  return axios("/projects", options);
 };
 
 export const patchProjects = (data, id) => {
@@ -27,7 +27,7 @@ export const patchProjects = (data, id) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios(`http://localhost:3009/projects/${id}`, options);
+  return axios(`/projects/${id}`, options);
 };
 
 export const deleteProjectsById = (id) => {
@@ -35,7 +35,7 @@ export const deleteProjectsById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/projects/${id}`, options);
+  return axios(`/projects/${id}`, options);
 };
 
 export const deleteProjects = (data) => {
@@ -44,5 +44,5 @@ export const deleteProjects = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/projects", options);
+  return axios("/projects", options);
 };

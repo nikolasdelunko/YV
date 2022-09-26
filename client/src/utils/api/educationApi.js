@@ -2,14 +2,14 @@ import axios from "axios";
 
 const token = localStorage.getItem("userInfo");
 
-export const getEducation = () => axios.get("http://localhost:3009/education");
+export const getEducation = () => axios.get("/education");
 
 export const getEducationById = (id) => {
   const options = {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/education/${id}`, options);
+  return axios(`/education/${id}`, options);
 };
 
 export const postEducation = (data) => {
@@ -18,7 +18,7 @@ export const postEducation = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/education", options);
+  return axios("/education", options);
 };
 
 export const deleteEducationById = (id) => {
@@ -26,7 +26,7 @@ export const deleteEducationById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/education/${id}`, options);
+  return axios(`/education/${id}`, options);
 };
 
 export const deleteEducation = (data) => {
@@ -35,5 +35,5 @@ export const deleteEducation = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/education", options);
+  return axios("/education", options);
 };

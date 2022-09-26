@@ -8,7 +8,7 @@ export const postSkills = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/skills", options);
+  return axios("/skills", options);
 };
 
 export const deleteSkills = () => {
@@ -16,7 +16,7 @@ export const deleteSkills = () => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios("http://localhost:3009/skills", options);
+  return axios("/skills", options);
 };
 
 export const deleteSkillsById = (id) => {
@@ -24,7 +24,7 @@ export const deleteSkillsById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/skills/${id}`, options);
+  return axios(`/skills/${id}`, options);
 };
 
-export const getSkills = () => axios("http://localhost:3009/skills");
+export const getSkills = () => axios("/skills");

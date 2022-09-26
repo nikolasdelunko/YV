@@ -10,7 +10,7 @@ export const uploadFile = (data) => {
     },
     data: data,
   };
-  return axios(`http://localhost:3009/upload`, options);
+  return axios(`/upload`, options);
 };
 
 export const getFile = () => {
@@ -18,7 +18,7 @@ export const getFile = () => {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/upload`, options);
+  return axios(`/upload`, options);
 };
 
 export const deleteFile = () => {
@@ -26,5 +26,5 @@ export const deleteFile = () => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/upload`, options);
+  return axios(`/upload`, options);
 };

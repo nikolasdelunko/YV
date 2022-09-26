@@ -8,17 +8,17 @@ export const registerUser = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios(`http://localhost:3009/users`, options);
+  return axios(`/users`, options);
 };
 
-export const getUserByToken = () => axios("http://localhost:3009/users");
+export const getUserByToken = () => axios("//users");
 
 export const getUsers = () => {
   const options = {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/users`, options);
+  return axios(`/users`, options);
 };
 
 export const getUserById = (id) => {
@@ -26,7 +26,7 @@ export const getUserById = (id) => {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/users/${id}`, options);
+  return axios(`/users/${id}`, options);
 };
 
 export const patchUser = (data, id) => {
@@ -35,7 +35,7 @@ export const patchUser = (data, id) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios(`http://localhost:3009/users/${id}`, options);
+  return axios(`/users/${id}`, options);
 };
 
 export const deleteUserById = (id) => {
@@ -43,7 +43,7 @@ export const deleteUserById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/users/${id}`, options);
+  return axios(`/users/${id}`, options);
 };
 
 export const deleteUser = (data) => {
@@ -52,8 +52,7 @@ export const deleteUser = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/users", options);
+  return axios("/users", options);
 };
 
-export const loginUser = (data) =>
-  axios.post("http://localhost:3009/users/login", data);
+export const loginUser = (data) => axios.post("/users/login", data);

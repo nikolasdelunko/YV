@@ -9,7 +9,7 @@ export default function Certificate() {
     const [data, setData] = useState()
 
     const getInfo = async() => {
-        const res =  await axios.get('http://localhost:3009/certificates')
+        const res =  await axios.get('/certificates')
         return setData(res.data)
     }
 
@@ -28,7 +28,6 @@ export default function Certificate() {
                  srcSet={`${item.link}`}
                  alt={item.title}
                  loading="lazy"
-								 key={item._id}
       />)}
         </Box>
     )

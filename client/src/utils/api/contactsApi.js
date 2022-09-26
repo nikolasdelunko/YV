@@ -2,14 +2,14 @@ import axios from "axios";
 
 const token = localStorage.getItem("userInfo");
 
-export const getContacts = () => axios.get("http://localhost:3009/contacts");
+export const getContacts = () => axios.get("/contacts");
 
 export const getContactsById = (id) => {
   const options = {
     method: "get",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/contacts/${id}`, options);
+  return axios(`/contacts/${id}`, options);
 };
 
 export const postContacts = (data) => {
@@ -18,7 +18,7 @@ export const postContacts = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/contacts", options);
+  return axios("/contacts", options);
 };
 
 export const patchContacts = (data, id) => {
@@ -27,7 +27,7 @@ export const patchContacts = (data, id) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios(`http://localhost:3009/contacts/${id}`, options);
+  return axios(`/contacts/${id}`, options);
 };
 
 export const deleteContactById = (id) => {
@@ -35,7 +35,7 @@ export const deleteContactById = (id) => {
     method: "delete",
     headers: { "auth-token": `${JSON.parse(token)}` },
   };
-  return axios(`http://localhost:3009/contacts/${id}`, options);
+  return axios(`/contacts/${id}`, options);
 };
 
 export const deleteContacts = (data) => {
@@ -44,5 +44,5 @@ export const deleteContacts = (data) => {
     headers: { "auth-token": `${JSON.parse(token)}` },
     data: data,
   };
-  return axios("http://localhost:3009/contacts", options);
+  return axios("/contacts", options);
 };

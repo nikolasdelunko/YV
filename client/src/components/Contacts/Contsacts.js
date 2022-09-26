@@ -13,7 +13,7 @@ export default function Contsacts() {
   const [cv, setCv] = useState();
 
   const getInfo = async () => {
-    const res = await axios.get("http://localhost:3009/contacts");
+    const res = await axios.get("/contacts");
     return setData(res.data[0]);
   };
 
@@ -56,7 +56,7 @@ export default function Contsacts() {
         </Typography>
       </Box>
       <Box>
-        <Stack  spacing={2} direction="row" className={classes.btnBox}>
+        <Stack spacing={2} direction="row" className={classes.btnBox}>
           <Grid
             container
             rowSpacing={1}
