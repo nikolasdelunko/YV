@@ -9,6 +9,8 @@ exports.deleteProjectById = async (req, res) => {
     res.send(`project with id  ${req.params.id} deleted`).end();
   }
 };
+
+
 exports.deleteProject = async (req, res) => {
   const projects = await Project.find().exec();
   if (!projects) {

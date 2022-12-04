@@ -10,7 +10,9 @@
     "start:client": "npm start --prefix client",
     "lint:client": "npm run lint --fix --prefix client",
     "start:server": "npm start --prefix server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "gh-pages": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "react-scripts": "^5.0.1"
   },
